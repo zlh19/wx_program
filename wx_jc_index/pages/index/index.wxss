@@ -1,0 +1,78 @@
+
+.p-main{
+	padding:0 5.6% 30rpx 5.6%;
+	color:#373737;
+}
+
+.p-top{
+	padding:68rpx 0 40rpx 0;
+	border-bottom:1rpx dashed #cbcbcb;
+}
+.p-top .u-title{
+	font-size:40rpx;
+}
+.p-top .u-desc{
+	font-size: 26rpx;
+	color: #929292;
+	padding:22rpx 0 0 0;
+}
+
+
+/*地址栏*/
+.p-address{
+	padding:25rpx 0;
+}
+
+.p-address .u-text{
+	height:80rpx;
+	line-height:80rpx;
+	font-size:28rpx;
+	position:relative;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+
+.p-address .u-icon{
+	margin-right:20rpx;
+}
+
+.p-address .icon-address{
+	width:22rpx;
+	height:30rpx;
+}
+
+.p-address .icon-tel{
+	width:24rpx;
+	height:24rpx;
+}
+
+.p-address .icon-time{
+	width:24rpx;
+	height:24rpx;
+}
+
+.p-address .icon-image{
+	width:26rpx;
+	height:22rpx;
+}
+
+.p-address .txt-address{
+	color:#373737;
+}
+
+
+/*列表*/
+.p-list{
+	font-size:0;
+}
+.p-list .pic-wrap{
+	display:inline-block;
+	width:33.33%;
+	margin-bottom:15rpx;
+}
+.p-list .pic-wrap .u-pic{
+	width:210rpx;
+	height:210rpx;
+}

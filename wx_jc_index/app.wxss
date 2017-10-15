@@ -1,0 +1,39 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+.body{
+	padding-bottom:100rpx;
+}
+
+/*导航*/
+.nav{
+	height:100rpx;
+	line-height:100rpx;
+	background:#fff;
+	position:fixed;
+	left:0;
+	bottom:0;
+	width:100%;
+	display:flex;
+	border-top:1rpx solid #eee;
+}
+
+.nav .nav-item{
+	flex:1;
+}
+
+.nav .nav-icon{display:block;text-align:center;margin:10rpx auto 0 auto;width:48rpx;height:48rpx;}
+.nav .nav-text{margin-top:10rpx;line-height:1;text-align:center;font-size:24rpx;color:#373737;}
+
+.nav .icon-index{}
+.nav .icon-product{}
+.nav .icon-find{}
+.nav .icon-mine{}

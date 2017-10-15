@@ -1,0 +1,16 @@
+page{background:#eee;}
+
+.p-top{padding:42rpx 0;background:#fff;}
+
+.p-top .user-head{margin:0 auto;width:140rpx;height:140rpx;border-radius:50%;overflow:hidden;}
+
+.p-top .head-img{width:140rpx;height:140rpx;}
+
+.p-top .user-name{text-align:center;line-height:1;margin-top:26rpx;font-size:32rpx;color:#373737;}
+
+/*列表*/
+.p-list{margin-top:10rpx;}
+
+.p-list .u-item{height:100rpx;line-height:100rpx;font-size:28rpx;color: #373737;background:#fff;border-bottom:1px solid #ebebeb;padding-left:92rpx;position:relative;}
+
+.p-list .u-icon{width:40rpx;height:40rpx;position:absolute;left:28rpx;top:50%;margin-top:-20rpx;}

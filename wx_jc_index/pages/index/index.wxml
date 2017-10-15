@@ -1,0 +1,35 @@
+
+<view class="body">
+	<view class="p-main">
+		<!-- 头部 -->
+		<view class="p-top">
+			<view class="u-title">{{title}}</view>
+			<view class="u-desc">{{desc}}</view>
+		</view>
+		<!-- address -->
+		<view class="p-address">
+			<view class="u-text" bindtap="tapAddress">
+				<image src="./imgs/icon_address.png" class="u-icon icon-address"></image>
+				{{address}}
+			</view>
+			<view class="u-text">
+				<image src="./imgs/icon_time.png" class="u-icon icon-time"></image>
+				{{time}}
+			</view>
+			<view class="u-text" bindtap="tapPhone">
+				<image src="./imgs/icon_tel.png" class="u-icon icon-tel"></image>
+				{{tel}}
+			</view>
+			<view class="u-text" bindtap="tapPhone">
+				<image src="./imgs/icon_image.png" class="u-icon icon-image"></image>
+				门店照片
+			</view>
+		</view>
+		<!-- 列表 -->
+		<div class="p-list">
+			<view class="pic-wrap" wx:for="{{housePicture}}" wx:key="unique">
+				<image src="{{item.img}}" class="u-pic"></image>
+			</view>
+		</div>
+	</view>
+</view>
