@@ -1,0 +1,113 @@
+.swiper{
+	height:420rpx;
+}
+
+/*地址栏*/
+.p-address{
+	padding:25rpx 0;
+}
+
+.p-address .u-text{
+	padding-left:50rpx;
+	height:50rpx;
+	line-height:50rpx;
+	font-size:28rpx;
+	position:relative;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+
+.p-address .u-icon{
+	margin-right:20rpx;
+}
+
+.p-address .icon-address{
+	width:22rpx;
+	height:30rpx;
+}
+
+.p-address .icon-tel{
+	width:24rpx;
+	height:24rpx;
+}
+
+.p-address .txt-address{
+	color:#373737;
+}
+
+.p-address .txt-tel{
+	color:#A16000;
+}
+
+/*列表栏*/
+.p-list{
+	border-top:20rpx solid #eee
+}
+
+.p-title{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	height:155rpx;
+	position:relative;
+}
+
+.p-title .u-text{
+	display:inline-block;
+	font-size:28rpx;
+	padding:0 35rpx;
+	background:#fff;
+	color:#373737;
+	position:relative;
+	z-index:10;
+}
+
+.p-title:after{
+	content:'';
+	position:absolute;
+	left:20%;
+	top:50%;
+	width:60%;
+	height:1rpx;
+	background:#eee;
+	z-index:5;
+}
+
+/*列表选项*/
+.p-list .item{
+	padding:20rpx 0;
+}
+
+.p-list .item-img{
+	display:block;
+	width:100%;
+}
+
+.p-list .u-infor{
+	padding-left:35rpx;
+	line-height:57rpx;
+	height:57rpx;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	font-size: 32rpx;
+	color: #373737;
+}
+
+.p-list .u-time{
+	padding-left:35rpx;
+	line-height:40rpx;
+	font-size: 24rpx;
+	color: #929292;
+}
+
+.p-list .u-time .u-timer{
+	width:20rpx;
+	height:20rpx;
+	margin-right:10rpx;
+}
+
+
+

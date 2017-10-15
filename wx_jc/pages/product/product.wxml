@@ -1,0 +1,21 @@
+<view class="body nav-null">
+	<view class="p-main">
+		<!-- 左侧 -->
+		<view class="p-left">
+			<view class="u-item current">所有</view>
+			<view class="u-item">实木</view>
+			<view class="u-item">强化</view>
+			<view class="u-item">复合</view>
+		</view>
+		<!-- 右侧 -->
+		<view class="p-right">
+			<view class="pro-item">
+				<image src="./imgs/upload/goods.png" class="pro-img"></image>
+				<view class="pro-infor">
+					<view class="pro-title">玻璃马赛克背景墙马赛克墙贴自贴建材</view>
+					<view class="pro-number">已成交100用户</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

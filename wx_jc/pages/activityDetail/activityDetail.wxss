@@ -1,0 +1,21 @@
+
+
+.p-top .top-img{
+	display:block;
+	width:100%;
+}
+
+.p-title{
+	padding:40rpx 4.8%;
+	line-height:20rpx;
+	font-size:36rpx;
+	color: #373737;
+	border-bottom:1px solid #eee;
+}
+
+.p-article{
+	padding:20rpx 4.8% 40rpx 4.8%;
+	text-indent:2em;
+	line-height:2;
+	font-size:30rpx;
+}

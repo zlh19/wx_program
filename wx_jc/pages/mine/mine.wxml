@@ -1,0 +1,13 @@
+<view class="body nav-null">
+	<view class="p-top">
+		<view class="user-head"><image src="./imgs/upload/user.png" class="head-img"></image></view>
+		<view class="user-name">东京不太热</view>
+	</view>
+	<view class="p-list">
+		<navigator class="u-item" url=""><image class="u-icon" src="./imgs/icon_foot.png"></image>我的足迹</navigator>
+		<navigator class="u-item" url=""><image class="u-icon" src="./imgs/icon_pre.png"></image>我的预定</navigator>
+		<navigator class="u-item" url=""><image class="u-icon" src="./imgs/icon_activity.png"></image>我的活动</navigator>
+		<navigator class="u-item" url=""><image class="u-icon" src="./imgs/icon_work_pic.png"></image>发布最新施工图</navigator>
+		<navigator class="u-item" url=""><image class="u-icon" src="./imgs/icon_infor.png"></image>最新预定消息</navigator>
+	</view>
+</view>
