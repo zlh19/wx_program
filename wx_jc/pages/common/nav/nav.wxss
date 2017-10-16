@@ -1,6 +1,5 @@
 /*导航*/
 .nav{
-	display:block;
 	height:36px;
 	line-height:36px;
 	text-align:center;

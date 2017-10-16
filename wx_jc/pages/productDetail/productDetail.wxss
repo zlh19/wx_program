@@ -1,0 +1,106 @@
+
+.swiper{
+	height:420rpx;
+}
+
+.swiper .slide-image{
+  width:100%;
+}
+
+/* 详情信息 */
+.p-infor{
+  padding:14rpx 0 48rpx 0;
+}
+
+.p-infor .u-number{
+  height:68rpx;
+  line-height:68rpx;
+  font-size:24rpx;
+  color: #929292;
+  position:relative;
+  padding:0 0 0 70rpx;
+}
+
+.p-infor .u-number .u-icon{
+  width:20rpx;
+  height:20rpx;
+  position:absolute;
+  left:44rpx;
+  top:50%;
+  margin-top:-10rpx;
+  background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAbBJREFUOBGtlc9qwkAQxmcXBVH0IHrxJkKh9z5IW2jfxNJHKPVNemh9EK9SWiLBgz347yAqSED7fUt2idtAN6UL62Qn8/2yk5mNSnLG6XQqr9fra1jOK4R00rAvpdQIc9hsNoewiS9XvmO5XN4AMoC/59/z1hMA+61W6y3r13YBiF6tVs+wr/D9BqOsx9hU4zglC0SKT8fjsW/XoZYaaBn+wB+Tcpomd/bngfRvmb7GtsuYfGfB43A4yHQ6lf1+7zRkkFViNeENeWdGTFgURZIkiVQqFalWqxbaI4s7JDBoZGH1el3a7faZjiwC2Wdng0/3hw/rdruitSuuCSeLHtu0xjmfz2U8HstsNnPMEFga3HFtY9W1Wk1QMVksFsaFyrl3xjTzdma1tArCD9iLrHOz2Ugcx4IUTFroNQmBgfGpsZtRFsbrRqNhdsKdFoAxs5HC0bmD6MWHcr3dbmW325lq+gXIi0fMvUJaZZyUdwQE92IeDL4J3vclU04wC59hH0oGWaaRzBnUutDxywKR6oAM+lxn4oP5yBvZwJBraqi1sf/+gf0B5JNYKB502MJ/Ad8FZ/JiDrrGlAAAAABJRU5ErkJggg==);
+  background-repeat:no-repeat;
+  background-size:contain;
+}
+
+.p-infor .u-text{
+  padding:0 40rpx;
+  font-size: 28rpx;
+  color: #373737;
+  text-align:justify;
+}
+
+/* 标题 */
+.p-title{
+  line-height:56rpx;
+  font-size:28rpx;
+  color: #373737;
+  background:#eee;
+  padding:0 40rpx;
+}
+
+
+/* 列表 */
+.p-list{
+  padding-bottom:100rpx;
+}
+.p-list .u-item{
+  overflow:hidden;
+}
+
+.p-list .u-item-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:34rpx 0 40rpx 0;
+  border-bottom:1px solid #e8e8e8;
+  margin:0 40rpx;
+}
+.p-list .u-item-title .u-title-text{
+  font-size:28rpx;
+  color: #373737;
+}
+.p-list .u-item-title .u-title-time{
+  font-size:24rpx;
+  color: #929292;
+}
+
+.p-list .u-item-pic-group{
+  padding:40rpx 0 0 40rpx;
+  display:flex;
+}
+
+.p-list .u-item-pic-wrap{
+  width:140rpx;
+  height:140rpx;
+  overflow:hidden;
+  margin:0 34rpx 0 0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#e9e9e9;
+}
+
+.btn{
+  height:100rpx;
+  line-height:100rpx;
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  font-size:32rpx;
+  color:#fff;
+  background:#F7AB00;
+  border:0;
+  border-radius:0px;
+}

@@ -5,7 +5,7 @@
 		<swiper class="swiper" indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorDotsColor}}"  indicator-active-color="{{indicatorDotsActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
 		  <block wx:for="{{imgUrls}}" wx:key="unique">
 		    <swiper-item>
-		      <image src="{{item}}" class="slide-image" width="355" height="150"/>
+		      <image src="{{item}}" class="slide-image" height="150"/>
 		    </swiper-item>
 		  </block>
 		</swiper>
@@ -29,23 +29,25 @@
 		</navigator>
 	</view>
 
-	<!-- 导航 -->
+	
+</view>
+<!-- 导航start -->
 	<view class="nav">
-		<navigator class="nav-item" url="/index">
-			<image src="./../../imgs/nav-index.png" class="nav-icon icon-index"></image>
+		<navigator class="nav-item current" url="/">
+      <view class="nav-icon icon-index"></view>
 			<view class="nav-text">首页</view>
 		</navigator>
-		<navigator class="nav-item" url="">
-			<image src="./../../imgs/nav-product.png" class="nav-icon icon-product"></image>
+		<navigator class="nav-item" url="/pages/product/product">
+      <view class="nav-icon icon-product"></view>
 			<view class="nav-text">产品</view>
 		</navigator>
-		<navigator class="nav-item" url="">
-			<image src="./../../imgs/nav-find.png" class="nav-icon icon-find"></image>
+		<!-- <navigator class="nav-item" url="">
+      <view class="nav-icon icon-find"></view>
 			<view class="nav-text">发现</view>
-		</navigator>
-		<navigator class="nav-item" url="/mine">
-			<image src="./../../imgs/nav-mine.png" class="nav-icon icon-mine"></image>
+		</navigator> -->
+		<navigator class="nav-item" url="/pages/mine/mine">
+      <view class="nav-icon icon-mine"></view>
 			<view class="nav-text">我的</view>
 		</navigator>
 	</view>
-</view>
+  <!-- 导航end -->

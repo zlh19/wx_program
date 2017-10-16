@@ -1,0 +1,40 @@
+
+<view class="body">
+	<!-- banner -->
+	<view class="swipe">
+		<swiper class="swiper" indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorDotsColor}}"  indicator-active-color="{{indicatorDotsActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+		  <block wx:for="{{imgUrls}}" wx:key="unique">
+		    <swiper-item>
+		      <image src="{{item}}" class="slide-image"/>
+		    </swiper-item>
+		  </block>
+		</swiper>
+	</view>
+	
+	<!-- address -->
+	<view class="p-infor">
+		<view class="u-number"><view class="u-icon"></view>已成交100用户</view>
+    <view class="u-text">简约素色仿亚麻进口墙纸客厅卧室书房通用简约高档不褪色这个东西就是好，看实物。实体店看实物消费就是踏实。看图再看实物消费。</view>
+	</view>
+
+  <!-- title -->
+  <view class="p-title">买家秀</view>
+	<!-- list -->
+	<view class="p-list">
+    <view class="u-item">
+      <view class="u-item-title">
+        <view class="u-title-text">合景天峻小区</view>
+        <view class="u-title-time">2017.8.10</view>
+      </view>
+      <view class="u-item-pic-group">
+        <view class="u-item-pic-wrap"><image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" class="u-item-pic" mode="aspectFit"/></view>
+        <view class="u-item-pic-wrap"><image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" class="u-item-pic" mode="aspectFit"/></view>
+        <view class="u-item-pic-wrap"><image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" class="u-item-pic" mode="aspectFit"/></view>
+        <view class="u-item-pic-wrap"><image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" class="u-item-pic" mode="aspectFit"/></view>
+      </view>
+    </view>
+    
+	</view>
+</view>
+<!-- 按钮 -->
+<button class="btn">我想预定</button>

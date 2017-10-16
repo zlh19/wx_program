@@ -15,13 +15,11 @@ Page({
         interval: 5000,
         duration: 1000,
         activityDataList:[{
-            id:0,
-            img:'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+            id:0,         img:'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
             title:'“金九银十”促销活动',
             time:'2017.9.20—2017.10.20'
         },{
-            id:1,
-            img:'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+            id:1,       img:'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
             title:'“金九银十”促销活动',
             time:'2017.9.20—2017.10.20'
         }]

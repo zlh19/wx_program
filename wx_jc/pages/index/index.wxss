@@ -2,6 +2,10 @@
 	height:420rpx;
 }
 
+.swiper .slide-image{
+  width:100%;
+}
+
 /*地址栏*/
 .p-address{
 	padding:25rpx 0;
@@ -70,14 +74,14 @@
 	left:20%;
 	top:50%;
 	width:60%;
-	height:1rpx;
+	height:1px;
 	background:#eee;
 	z-index:5;
 }
 
 /*列表选项*/
 .p-list .item{
-	padding:20rpx 0;
+	padding:0 0 20rpx 0;
 }
 
 .p-list .item-img{
@@ -87,6 +91,7 @@
 
 .p-list .u-infor{
 	padding-left:35rpx;
+  margin-top:10rpx;
 	line-height:57rpx;
 	height:57rpx;
 	overflow:hidden;

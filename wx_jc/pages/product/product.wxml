@@ -9,13 +9,22 @@
 		</view>
 		<!-- 右侧 -->
 		<view class="p-right">
-			<view class="pro-item">
-				<image src="./imgs/upload/goods.png" class="pro-img"></image>
-				<view class="pro-infor">
-					<view class="pro-title">玻璃马赛克背景墙马赛克墙贴自贴建材</view>
-					<view class="pro-number">已成交100用户</view>
-				</view>
-			</view>
+      <!-- 内容 -->
+      <navigator url="" class="pro-item">
+        <image src="./imgs/upload/goods.png" class="pro-img"></image>
+        <view class="pro-infor">
+          <view class="pro-title">玻璃马赛克背景墙马赛克墙贴自贴建材</view>
+          <view class="pro-number">已成交100用户</view>
+        </view>
+      </navigator>
+      <!-- 内容 -->
+			<navigator url="" class="pro-item">
+        <image src="./imgs/upload/goods.png" class="pro-img"></image>
+        <view class="pro-infor">
+          <view class="pro-title">玻璃马赛克背景墙马赛克墙贴自贴建材</view>
+          <view class="pro-number">已成交100用户</view>
+        </view>
+      </navigator>
 		</view>
 	</view>
 </view>
