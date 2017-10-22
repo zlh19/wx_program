@@ -13,8 +13,8 @@
 	
 	<!-- address -->
 	<view class="p-address">
-		<view class="u-text txt-address" bindtap="tapAddress"><image src="./imgs/address.png" class="u-icon icon-address"></image>西湖区古墩路970号温州村装修市场4-01-32</view>
-		<view class="u-text txt-tel" bindtap="tapPhone"><image src="./imgs/tel.png" class="u-icon icon-tel"></image>联系电话: 40015018888</view>
+		<view class="u-text txt-address" bindtap="tapAddress"><image src="./imgs/address.png" class="u-icon icon-address"></image>{{addressName}}</view>
+		<view class="u-text txt-tel" bindtap="tapPhone"><image src="./imgs/tel.png" class="u-icon icon-tel"></image>联系电话: {{addressTel}}</view>
 	</view>
 
 	<!-- list -->

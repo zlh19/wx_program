@@ -36,6 +36,7 @@
 	</view>
   <!-- uer-register -->
   <view class="dialog-user" wx:if='{{dialogShow}}'>
+    <view class='dialog-bg' bindtap='dialogOutTap'></view>
     <view class='dialog-main'>
       <view class='dialog-user-title'>用户注册</view>
       <view class='dialog-content'>
@@ -47,7 +48,7 @@
         </view>
         <view class='ipt-wrap'>
           <input type='text' class='ipt' placeholder-class='ipt-placeholder' placeholder='填写验证码' maxlength='6' bindinput='bindCodeInput'/>  
-          <button class='btn-code'>获取验证码</button>
+          <button class='btn-code' bindtap='codeTap' disabled='{{btnCodeDisabled}}'>{{btnCodeText}}</button>
         </view>
       </view>
       <view class='dialog-submit' bindtap='registerSubmitTap'>提交</view>

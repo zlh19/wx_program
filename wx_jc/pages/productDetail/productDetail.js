@@ -15,7 +15,11 @@ Page({
       dialogShow:false,
       iptNameValue:'',
       iptTelValue:'',
-      iptCodeValue:''
+      iptCodeValue:'',
+      btnCodeDisabled:'',
+      btnCodeText:'获取验证码',
+      initTime:60,
+      totalTime:60
     },
     tapBanner(e){
       const currentPicture = e.currentTarget.dataset.picture;
@@ -56,6 +60,33 @@ Page({
         return false
       }
       return true
+    },
+    dialogOutTap(){
+      this.setData({
+        dialogShow: false
+      })
+    },
+    codeTap(){
+        this.setData({
+          btnCodeDisabled: 'disabled',
+          btnCodeText: '发送验证码'
+        })
+        this.interTimer = setInterval(() => {
+          if (this.data.totalTime == 1) {
+            this.setData({
+              totalTime: this.data.initTime,
+              btnCodeText: '获取验证码',
+              btnCodeDisabled: ''
+            })
+            clearInterval(this.interTimer)
+          }else{
+            this.data.totalTime--
+            this.setData({
+              totalTime: this.data.totalTime,
+              btnCodeText: this.data.totalTime,
+            })
+          }
+        }, 1000)
     },
     registerSubmitTap(){
       const iptNameValue = this.data.iptNameValue,

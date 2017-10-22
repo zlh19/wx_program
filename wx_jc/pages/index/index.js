@@ -3,6 +3,10 @@ import {Ajax} from './../../utils/ajax'
 
 Page({
     data: {
+        addressName: '西湖区古墩路970号温州村装修市场4-01-32',
+        addressTel: '40015018888',
+        longitude: 120.102093,
+        latitude: 30.321273,
         imgUrls: [
           'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
           'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
@@ -25,17 +29,18 @@ Page({
         }]
     },
     onLoad(){
-        wx.getSetting({
-          success: (res) => {
-            console.log(res)
-            /*
-             * res.authSetting = {
-             *   "scope.userInfo": true,
-             *   "scope.userLocation": true
-             * }
-             */
+      wx.getSetting({
+        success(res) {
+          if (!res.authSetting['scope.record']) {
+            wx.authorize({
+              scope: 'scope.record',
+              success() {
+                wx.startRecord()
+              }
+            })
           }
-        })
+        }
+      })
 
        Ajax({
         url:'',
@@ -48,25 +53,18 @@ Page({
        })
     },
     // 获取地图
-    getAddress(){
-      alert(0)
-        wx.getLocation({
-          type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-          success: function(res) {
-            var latitude = res.latitude
-            var longitude = res.longitude
-            wx.openLocation({
-              latitude: latitude,
-              longitude: longitude,
-              scale: 28
-            })
-          }
-        })
+    tapAddress(){
+      wx.openLocation({
+        longitude: this.data.longitude,
+        latitude: this.data.latitude,
+        name:this.data.addressName,
+        scale: 28
+      })
     },
     // 打电话
     tapPhone(){
         wx.makePhoneCall({
-          phoneNumber: '13738052554'
+          phoneNumber:this.data.addressTel
         })
     }
     

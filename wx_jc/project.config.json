@@ -8,8 +8,9 @@
 	},
 	"compileType": "weapp",
 	"libVersion": "1.6.0",
-	"appid": "touristappid",
-	"projectname": "wx_jc",
+	"appid": "wx168748258b6c5e82",
+	"projectname": "wx_jc_me",
+	"miniprogramRoot": "./",
 	"condition": {
 		"weapp": {
 			"current": -1,
