@@ -48,7 +48,8 @@ Page({
        })
     },
     // 获取地图
-    tapAddress(){
+    getAddress(){
+      alert(0)
         wx.getLocation({
           type: 'gcj02', //返回可以用于wx.openLocation的经纬度
           success: function(res) {

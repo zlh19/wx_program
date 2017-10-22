@@ -5,7 +5,7 @@
 		<swiper class="swiper" indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorDotsColor}}"  indicator-active-color="{{indicatorDotsActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
 		  <block wx:for="{{imgUrls}}" wx:key="unique">
 		    <swiper-item>
-		      <image src="{{item}}" class="slide-image"/>
+		      <image src="{{item}}" class="slide-image" data-picture="{{item}}"  bindtap='tapBanner'/>
 		    </swiper-item>
 		  </block>
 		</swiper>
@@ -33,8 +33,26 @@
         <view class="u-item-pic-wrap"><image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" class="u-item-pic" mode="aspectFit"/></view>
       </view>
     </view>
-    
 	</view>
+  <!-- uer-register -->
+  <view class="dialog-user" wx:if='{{dialogShow}}'>
+    <view class='dialog-main'>
+      <view class='dialog-user-title'>用户注册</view>
+      <view class='dialog-content'>
+        <view class='ipt-wrap'>
+          <input type='text' class='ipt' placeholder-class='ipt-placeholder' placeholder='填写姓名' bindinput='bindNameInput'/>
+        </view>
+        <view class='ipt-wrap'>
+          <input type='text' class='ipt' placeholder-class='ipt-placeholder' placeholder='填写电话' maxlength='11' bindinput='bindTelInput'/>
+        </view>
+        <view class='ipt-wrap'>
+          <input type='text' class='ipt' placeholder-class='ipt-placeholder' placeholder='填写验证码' maxlength='6' bindinput='bindCodeInput'/>  
+          <button class='btn-code'>获取验证码</button>
+        </view>
+      </view>
+      <view class='dialog-submit' bindtap='registerSubmitTap'>提交</view>
+    </view>
+  </view>
 </view>
 <!-- 按钮 -->
-<button class="btn">我想预定</button>
+<button class="btn" bindtap='submitTap'>我想预定</button>

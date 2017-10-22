@@ -104,3 +104,84 @@
   border:0;
   border-radius:0px;
 }
+
+/* 弹出层 */
+.dialog-user{
+  position:fixed;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  z-index:1024;
+  background:rgba(0,0,0,.5);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.dialog-user .dialog-main{
+  width:580rpx;
+  border-radius:20rpx;
+  background:#e5e3e2;
+
+}
+.dialog-user .dialog-user-title{
+  font-size: 34rpx;
+  color: #030303;
+  text-align:center;
+  padding:46rpx 0;
+}
+
+.dialog-user .dialog-content{
+  padding-bottom:34rpx;
+}
+.dialog-user .ipt-wrap{
+  position:relative;
+  width:480rpx;
+  margin:0 auto;
+  height:88rpx;
+  line-height:88rpx;
+  background:#fff;
+  border-radius:6rpx;
+  overflow:hidden;
+  margin-bottom:20rpx;
+  padding-left:32rpx;
+  box-sizing:border-box;
+}
+.dialog-user .ipt{
+  font-size:30rpx;
+  display:block;
+  height:100%;
+}
+.dialog-user .ipt-placeholder{
+  font-weight:normal;
+  color: #929292;
+  font-size:30rpx;
+}
+.dialog-user .btn-code{
+  position:absolute;
+  right:8rpx;
+  top:50%;
+  width:180rpx;
+  height:68rpx;
+  line-height:68rpx;
+  margin-top:-34rpx;
+  background: #E3E3E3; 
+  font-size:24rpx;
+  color:#373737;
+  border:0;
+  border-radius:6rpx;
+  box-shadow:none;
+  z-index:10;
+}
+
+.dialog-user .dialog-submit{
+  border:0;
+  border-top:1px solid #d4d4d4;
+  height:86rpx;
+  line-height:86rpx;
+  text-align:center; 
+  font-size: 34rpx;
+  color: #0076FF;
+  border-radius:0px 0px 0px 0px;
+  background:none;
+}

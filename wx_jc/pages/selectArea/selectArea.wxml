@@ -1,0 +1,22 @@
+
+<view class="body">
+  <!-- 省市区 -->
+  <view class='ipt-wrap'>
+    <view class='ipt-text'>选择地区</view>
+    <input type='text' class='ipt' placeholder='地区信息' placeholder-class='ipt-placeholder' disabled='true' bindtap='translate' value='{{province}}{{city}}{{county}}'/>
+    <view class='address-icon'></view>
+  </view>
+  <!-- 地址 -->
+  <view class='ipt-wrap'>
+    <view class='ipt-text'>详细地址</view>
+    <input type='text' class='ipt' placeholder='街道门牌信息' placeholder-class='ipt-placeholder' />
+  </view>
+  <!-- 保存 -->
+  <view class='submit-btn'>保存</view>
+
+<!-- 市区 -->
+<import src="../../model/model.wxml"/>
+<view class="infoText"></view>
+<template is="areaData" data="{{...item}}"/>
+
+</view>

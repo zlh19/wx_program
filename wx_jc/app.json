@@ -1,5 +1,7 @@
 {
-  "pages":[
+  "pages": [
+    "pages/publishPicture/publishPicture",
+    "pages/selectArea/selectArea",
     "pages/productDetail/productDetail",
     "pages/index/index",
     "pages/product/product",
@@ -8,10 +10,10 @@
     "pages/mineMessage/mineMessage",
     "pages/logs/logs"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"#fff"
+    "navigationBarTextStyle": "#fff"
   }
 }
