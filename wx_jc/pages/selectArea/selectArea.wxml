@@ -9,14 +9,18 @@
   <!-- 地址 -->
   <view class='ipt-wrap'>
     <view class='ipt-text'>详细地址</view>
-    <input type='text' class='ipt' placeholder='街道门牌信息' placeholder-class='ipt-placeholder' />
+    <input type='text' class='ipt' placeholder='街道门牌信息' placeholder-class='ipt-placeholder' bindinput='bindAddressDetailInput'/>
   </view>
   <!-- 保存 -->
-  <view class='submit-btn'>保存</view>
+  <view class='submit-btn' bindtap='submitSave'>保存</view>
 
 <!-- 市区 -->
 <import src="../../model/model.wxml"/>
 <view class="infoText"></view>
 <template is="areaData" data="{{...item}}"/>
 
+</view>
+<!-- 提示框 -->
+<view class='error-tips' wx:if='{{errorMessageStatus}}'>
+  <view class='error-tips-main'>{{errorMessage}}</view>
 </view>

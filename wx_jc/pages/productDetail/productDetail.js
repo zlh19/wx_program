@@ -12,7 +12,9 @@ Page({
       autoplay: false,
       interval: 5000,
       duration: 1000,
-      dialogShow:false,
+      dialogShow:true,
+      errorMessageStatus:false,
+      errorMessage:'',
       iptNameValue:'',
       iptTelValue:'',
       iptCodeValue:'',
@@ -32,7 +34,7 @@ Page({
     },
     submitTap(){
       this.setData({
-        dialogShow:true
+        dialogShow:false
       })
     },
     bindNameInput(e){
@@ -52,18 +54,22 @@ Page({
     },
     showErrorMessage(value,text){
       if (value === '') {
-        wx.showToast({
-          title: text,
-          icon: 'loading',
-          duration: 1500
+        this.setData({
+          errorMessage: text,
+          errorMessageStatus:true
         })
+        setTimeout(()=>{
+          this.setData({
+            errorMessageStatus: false
+          })
+        },1000)
         return false
       }
       return true
     },
     dialogOutTap(){
       this.setData({
-        dialogShow: false
+        dialogShow: true
       })
     },
     codeTap(){
@@ -102,7 +108,7 @@ Page({
         return 
       }
       this.setData({
-        dialogShow:false
+        dialogShow:true
       })
     }
     

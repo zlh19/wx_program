@@ -35,7 +35,7 @@
     </view>
 	</view>
   <!-- uer-register -->
-  <view class="dialog-user" wx:if='{{dialogShow}}'>
+  <view class="dialog-user" hidden='{{dialogShow}}'>
     <view class='dialog-bg' bindtap='dialogOutTap'></view>
     <view class='dialog-main'>
       <view class='dialog-user-title'>用户注册</view>
@@ -57,3 +57,8 @@
 </view>
 <!-- 按钮 -->
 <button class="btn" bindtap='submitTap'>我想预定</button>
+
+<!-- 提示框 -->
+<view class='error-tips' wx:if='{{errorMessageStatus}}'>
+  <view class='error-tips-main'>{{errorMessage}}</view>
+</view>

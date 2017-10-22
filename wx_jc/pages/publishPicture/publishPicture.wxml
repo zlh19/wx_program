@@ -29,3 +29,8 @@
 
 
 </view>
+
+<!-- 提示框 -->
+<view class='error-tips' wx:if='{{errorMessageStatus}}'>
+  <view class='error-tips-main'>{{errorMessage}}</view>
+</view>

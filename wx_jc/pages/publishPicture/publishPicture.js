@@ -3,10 +3,12 @@ Page({
   data: {
     categoryValue:'',
     sizeValue:'',
-    bindAddressValue:'',
-    picList:['http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-    'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-    ]
+    bindAddressValue: '',
+    picList: ['http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+    ],
+    errorMessageStatus: false,
+    errorMessage: ''
   },
   deletePictureTap(e){
     const index=e.target.dataset.index;
@@ -41,11 +43,15 @@ Page({
   },
   showErrorMessage(value, text) {
     if (value === '') {
-      wx.showToast({
-        title: text,
-        icon: 'loading',
-        duration: 1500
+      this.setData({
+        errorMessage: text,
+        errorMessageStatus: true
       })
+      setTimeout(() => {
+        this.setData({
+          errorMessageStatus: false
+        })
+      }, 1000)
       return false
     }
     return true
