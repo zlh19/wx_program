@@ -1,6 +1,8 @@
 var app = getApp()
+import { Ajax } from './../../utils/ajax'
 Page({
     data: {
+      params:{},
       imgUrls: [
         'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
         'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
@@ -31,6 +33,36 @@ Page({
         current: currentPicture, // 当前显示图片的http链接
         urls: pictureList // 需要预览的图片http链接列表
       })
+    },
+    onLoad(){
+      this.getUrlParams()
+      this.getDetailInfor(this.data.params.id)
+    },
+    getUrlParams(){
+      const urlParam = getCurrentPages()[1].options
+      this.setData({
+        params: urlParam
+      })
+    },
+    getDetailInfor(id){
+        Ajax({
+          url: '/produce/' + id,
+          method: 'get',
+          data: {
+            cateId: id
+          }
+        }).then((res) => {
+          if (res.data.code === 0) {
+            const resData=res.data.data;
+            this.setData({
+              imgUrls: resData.imgs,
+              turnover: resData.turnover,
+              intro:resData.intro
+            })
+          }
+        }).catch((error) => {
+          console.log(error)
+        })
     },
     submitTap(){
       this.setData({

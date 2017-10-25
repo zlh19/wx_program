@@ -2,27 +2,16 @@
 	<view class="p-main">
 		<!-- 左侧 -->
 		<view class="p-left">
-			<view class="u-item current">所有</view>
-			<view class="u-item">实木</view>
-			<view class="u-item">强化</view>
-			<view class="u-item">复合</view>
+			<view class="u-item {{item.current}}" wx:for="{{cateList}}" wx:key="unique" bindtap='cateTap' data-id="{{item.id}}" data-index="{{index}}">{{item.cate}}</view>
 		</view>
 		<!-- 右侧 -->
 		<view class="p-right">
       <!-- 内容 -->
-      <navigator url="/pages/productDetail/productDetail" class="pro-item">
-        <image src="./imgs/upload/goods.png" class="pro-img"></image>
+      <navigator url="/pages/productDetail/productDetail?id={{item.id}}" class="pro-item"   wx:for="{{productList}}" wx:key="unique">
+        <image src="{{item.img}}" class="pro-img"></image>
         <view class="pro-infor">
-          <view class="pro-title">玻璃马赛克背景墙马赛克墙贴自贴建材</view>
-          <view class="pro-number">已成交100用户</view>
-        </view>
-      </navigator>
-      <!-- 内容 -->
-			<navigator url="" class="pro-item">
-        <image src="./imgs/upload/goods.png" class="pro-img"></image>
-        <view class="pro-infor">
-          <view class="pro-title">玻璃马赛克背景墙马赛克墙贴自贴建材</view>
-          <view class="pro-number">已成交100用户</view>
+          <view class="pro-title">{{item.model}}</view>
+          <view class="pro-number">已成交{{item.turnover}}用户</view>
         </view>
       </navigator>
 		</view>

@@ -1,5 +1,7 @@
+import {Config} from '../config/config.js'
+
 const Ajax=function(obj){
-    const url=obj.url||'';
+  const url = (Config.hosts+obj.url)||'';
     const data=obj.data||{};
     const method=obj.method||'GET';
     const contentType=obj.contentType||'application/json';
@@ -11,6 +13,7 @@ const Ajax=function(obj){
             data:data,
             method:method,
             header: {
+               'sid': Config.publicParams.sid,
                'content-type':contentType
             },
             success:(res)=>{

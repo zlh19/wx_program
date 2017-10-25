@@ -25,7 +25,7 @@
 		<navigator class="item" url="/pages/activityDetail/activityDetail?id={{item.id}}" wx:for="{{activityDataList}}" wx:key="unique">
 			<image src="{{item.img}}" class="item-img"/>
 			<view class="u-infor">{{item.title}}</view>
-			<view class="u-time"><image class="u-timer" src="./imgs/timer.png"></image>{{item.time}}</view>
+			<view class="u-time"><image class="u-timer" src="./imgs/timer.png"></image>{{item.beginTime}}-{{item.endTime}}</view>
 		</navigator>
 	</view>
 

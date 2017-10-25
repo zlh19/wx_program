@@ -14,7 +14,7 @@
 	<!-- address -->
 	<view class="p-infor">
 		<view class="u-number"><view class="u-icon"></view>已成交100用户</view>
-    <view class="u-text">简约素色仿亚麻进口墙纸客厅卧室书房通用简约高档不褪色这个东西就是好，看实物。实体店看实物消费就是踏实。看图再看实物消费。</view>
+    <view class="u-text">{{intro}}</view>
 	</view>
 
   <!-- title -->

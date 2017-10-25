@@ -9,7 +9,7 @@
 	"compileType": "weapp",
 	"libVersion": "1.6.0",
 	"appid": "wx168748258b6c5e82",
-	"projectname": "wx_jc_me",
+	"projectname": "wx_yixing",
 	"miniprogramRoot": "./",
 	"condition": {
 		"weapp": {

@@ -1,3 +1,4 @@
+import { Ajax } from './utils/ajax'
 //app.js
 App({
   onLaunch: function () {
@@ -5,6 +6,8 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+
+    this.getUserInfo()
   },
   getUserInfo:function(cb){
     var that = this
@@ -13,16 +16,34 @@ App({
     }else{
       //调用登录接口
       wx.login({
-        success: function () {
+        success(res) {
+          if (res.code) {
+            const resCode=res.code
+            console.log(res.code)
+            Ajax({
+              url: '/user/login',
+              method: 'post',
+              data: {
+                code: resCode
+              }
+            }).then((res) => {
+                console.log(res)
+            }).catch((error) => {
+              
+            })
+          }
+        }
+      })
+    }
+  },
+  getUser(){
           wx.getUserInfo({
             success: function (res) {
+              console.log(res)
               that.globalData.userInfo = res.userInfo
               typeof cb == "function" && cb(that.globalData.userInfo)
             }
           })
-        }
-      })
-    }
   },
   globalData:{
     userInfo:null

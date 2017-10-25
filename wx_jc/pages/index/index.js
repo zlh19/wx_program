@@ -1,56 +1,73 @@
+var app = getApp()
 import {Ajax} from './../../utils/ajax'
-
-
 Page({
     data: {
-        addressName: '西湖区古墩路970号温州村装修市场4-01-32',
-        addressTel: '40015018888',
-        longitude: 120.102093,
-        latitude: 30.321273,
-        imgUrls: [
-          'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-          'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-          'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-        ],
+        addressName: '',
+        addressTel: '',
+        longitude: 0,
+        latitude: 0,
+        imgUrls: [],
         indicatorDotsColor:'#F3F3F3',
         indicatorDotsActiveColor:'#F7AB00',
         indicatorDots: true,
         autoplay: false,
         interval: 5000,
         duration: 1000,
-        activityDataList:[{
-            id:0,         img:'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-            title:'“金九银十”促销活动',
-            time:'2017.9.20—2017.10.20'
-        },{
-            id:1,       img:'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-            title:'“金九银十”促销活动',
-            time:'2017.9.20—2017.10.20'
-        }]
+        activityDataList:[]
     },
     onLoad(){
-      wx.getSetting({
-        success(res) {
-          if (!res.authSetting['scope.record']) {
-            wx.authorize({
-              scope: 'scope.record',
-              success() {
-                wx.startRecord()
-              }
-            })
-          }
+      // wx.getSetting({
+      //   success(res) {
+      //     if (!res.authSetting['scope.record']) {
+      //       wx.authorize({
+      //         scope: 'scope.record',
+      //         success() {
+      //           wx.startRecord()
+      //         }
+      //       })
+      //     }
+      //   }
+      // })
+
+      this.getUserInfor()
+      this.getActivityInfor()
+    },
+    getUserInfor(){
+      Ajax({
+        url: '/store',
+        method: 'get',
+        data: {}
+      }).then((res) => {
+        if (res.data.code === 0) {
+          const resData = res.data.data;
+          console.log(resData)
+          this.setData({
+            addressName: resData.placeName,
+            longitude: resData.placeLat,
+            latitude: resData.placeLong,
+            imgUrls: resData.imgs,
+            addressTel: resData.tel
+          })
         }
+      }).catch((error) => {
+        console.log(error)
       })
-
-       Ajax({
-        url:'',
-        method:'get',
-        data:{}
-       }).then((res)=>{
-
-       }).catch((error)=>{
-
-       })
+    },
+    getActivityInfor(){
+      Ajax({
+        url: '/store/activities',
+        method: 'get',
+        data: {}
+      }).then((res) => {
+        if (res.data.code === 0) {
+          const resData = res.data.data;
+          this.setData({
+            activityDataList: resData
+          })
+        }
+      }).catch((error) => {
+        console.log(error)
+      })
     },
     // 获取地图
     tapAddress(){
