@@ -21,16 +21,13 @@
   <view class="p-title">买家秀</view>
 	<!-- list -->
 	<view class="p-list">
-    <view class="u-item">
+    <view class="u-item" wx:for="{{buyList}}" wx:for-item="items" wx:key="unique">
       <view class="u-item-title">
-        <view class="u-title-text">合景天峻小区</view>
-        <view class="u-title-time">2017.8.10</view>
+        <view class="u-title-text">{{items.title}}</view>
+        <view class="u-title-time">{{items.time}}</view>
       </view>
       <view class="u-item-pic-group">
-        <view class="u-item-pic-wrap"><image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" class="u-item-pic" mode="aspectFit"/></view>
-        <view class="u-item-pic-wrap"><image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" class="u-item-pic" mode="aspectFit"/></view>
-        <view class="u-item-pic-wrap"><image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" class="u-item-pic" mode="aspectFit"/></view>
-        <view class="u-item-pic-wrap"><image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" class="u-item-pic" mode="aspectFit"/></view>
+        <view class="u-item-pic-wrap" wx:for="{{items.imgs}}" wx:key="unique" wx:for-item="item"><image src="{{item}}" class="u-item-pic" mode="aspectFit" /></view>
       </view>
     </view>
 	</view>

@@ -5,8 +5,8 @@ Page({
       params:{},
       imgUrls: [
         'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-        'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+        'http://img06.tooopen.com/images/20160818/tooopen_sy_143912755726.jpg',
+        'http://img06.tooopen.com/images/20160818/tooopen_sy_143912755726.jpg'
       ],
       indicatorDotsColor: '#F3F3F3',
       indicatorDotsActiveColor: '#F7AB00',
@@ -17,6 +17,21 @@ Page({
       dialogShow:true,
       errorMessageStatus:false,
       errorMessage:'',
+      buyList: [{
+        title: 'asdf',
+        time: '2017.8.10',
+        imgs: [
+          'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg']
+      }, {
+        title: 'asdf',
+        time: '2017.8.10',
+        imgs: [
+          'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg']
+      }],
       iptNameValue:'',
       iptTelValue:'',
       iptCodeValue:'',

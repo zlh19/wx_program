@@ -40,7 +40,6 @@ Page({
       }).then((res) => {
         if (res.data.code === 0) {
           const resData = res.data.data;
-          console.log(resData)
           this.setData({
             addressName: resData.placeName,
             longitude: resData.placeLat,
