@@ -1,13 +1,14 @@
 {
   "pages": [
-    "pages/product/product",
-    "pages/productDetail/productDetail",
     "pages/index/index",
-    "pages/selectArea/selectArea",
+    "pages/productDetail/productDetail",
     "pages/publishPicture/publishPicture",
-    "pages/activityDetail/activityDetail",
     "pages/mine/mine",
     "pages/mineMessage/mineMessage",
+    "pages/sellMessage/sellMessage",
+    "pages/product/product",
+    "pages/selectArea/selectArea",
+    "pages/activityDetail/activityDetail",
     "pages/logs/logs"
   ],
   "window": {

@@ -52,6 +52,7 @@ page{
 
 .upload-list{
   margin:22rpx 0 0 0;
+  padding-bottom:28rpx;
   display:flex;
 }
 
@@ -82,7 +83,6 @@ page{
   height:120rpx;
   border:1px dashed #cbcbcb;
   position:relative;
-  margin-bottom:28rpx;
 }
 
 

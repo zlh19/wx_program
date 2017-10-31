@@ -1,0 +1,15 @@
+<view class="body nav-null">
+	<view class="p-list">
+		<view class="msg-item" wx:for="{{messageListData}}" wx:key="unique">
+			<view class="msg-title">
+				<view class="msg-name">{{item.userName}}</view>
+				<view class="msg-tel">{{item.userTel}}</view>
+				<view class="msg-timer">{{item.userTimer}}</view>
+			</view>
+			<view class="msg-infor">
+				<view class="u-text">{{item.goodsText}}</view>
+				<view class="u-text">{{item.goodsName}}</view>
+			</view>
+		</view>
+	</view>
+</view>

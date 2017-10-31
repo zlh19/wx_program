@@ -1,19 +1,22 @@
 var app = getApp()
 import {Ajax} from './../../utils/ajax'
+import { formatTime } from './../../utils/util.js'
+import { Config } from './../../config/config'
 Page({
     data: {
-        addressName: '',
-        addressTel: '',
-        longitude: 0,
-        latitude: 0,
-        imgUrls: [],
-        indicatorDotsColor:'#F3F3F3',
-        indicatorDotsActiveColor:'#F7AB00',
-        indicatorDots: true,
-        autoplay: false,
-        interval: 5000,
-        duration: 1000,
-        activityDataList:[]
+      Config:Config,
+      addressName: '',
+      addressTel: '',
+      longitude: 0,
+      latitude: 0,
+      imgUrls: [],
+      indicatorDotsColor:'#F3F3F3',
+      indicatorDotsActiveColor:'#F7AB00',
+      indicatorDots: true,
+      autoplay: false,
+      interval: 5000,
+      duration: 1000,
+      activityDataList:[]
     },
     onLoad(){
       // wx.getSetting({
@@ -28,6 +31,7 @@ Page({
       //     }
       //   }
       // })
+      console.log(app.globalData, '----')
 
       this.getUserInfor()
       this.getActivityInfor()
@@ -60,6 +64,10 @@ Page({
       }).then((res) => {
         if (res.data.code === 0) {
           const resData = res.data.data;
+          resData.map((item,index)=>{
+            item.begintime = formatTime(new Date(item.begintime))
+            item.endtime = formatTime(new Date(item.endtime))
+          })
           this.setData({
             activityDataList: resData
           })

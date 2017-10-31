@@ -24,7 +24,7 @@ Page({
     },
     getMessageInfor(){
       Ajax({
-        url: '/user/reserves',
+        url: '/seller/reserves',
         method: 'get',
         data: {
           localSession:'111',

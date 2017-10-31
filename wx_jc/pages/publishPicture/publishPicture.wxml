@@ -16,7 +16,7 @@
         <view class='icon-close' data-index="{{index}}" bindtap='deletePictureTap'></view>
       </view>
       <!-- 添加按钮 -->
-      <view class='upload-btn' bindtap='addPictureTap'></view>
+      <view class='upload-btn' bindtap='addPictureTap' wx:if="{{addPictureBtnShow}}"></view>
     </view>
   </view>
   <!-- 地址 -->

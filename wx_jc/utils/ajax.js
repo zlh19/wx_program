@@ -5,6 +5,12 @@ const Ajax=function(obj){
     const data=obj.data||{};
     const method=obj.method||'GET';
     const contentType=obj.contentType||'application/json';
+    const headerInit={
+      'sid': Config.publicParams.sid,
+      'content-type': contentType
+    }
+    const header = Object.assign({}, obj.header, headerInit)
+    
 
     const promiseAjax=new Promise(function(resolve,reject){
         wx.showLoading()
@@ -12,10 +18,7 @@ const Ajax=function(obj){
             url:url, 
             data:data,
             method:method,
-            header: {
-               'sid': Config.publicParams.sid,
-               'content-type':contentType
-            },
+            header: header,
             success:(res)=>{
               resolve(res)
             },

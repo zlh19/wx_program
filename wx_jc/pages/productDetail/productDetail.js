@@ -1,7 +1,9 @@
 var app = getApp()
 import { Ajax } from './../../utils/ajax'
+import { Config } from './../../config/config'
 Page({
     data: {
+      Config: Config,
       params:{},
       imgUrls: [
         'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
@@ -52,37 +54,94 @@ Page({
     onLoad(){
       this.getUrlParams()
       this.getDetailInfor(this.data.params.id)
+      this.getBuyInfor(this.data.params.id)
+      
     },
     getUrlParams(){
-      const urlParam = getCurrentPages()[1].options
+      const urlParam = getCurrentPages()[2].options
+      console.log(getCurrentPages())
       this.setData({
         params: urlParam
       })
     },
-    getDetailInfor(id){
-        Ajax({
-          url: '/produce/' + id,
-          method: 'get',
-          data: {
-            cateId: id
-          }
-        }).then((res) => {
-          if (res.data.code === 0) {
-            const resData=res.data.data;
-            this.setData({
-              imgUrls: resData.imgs,
-              turnover: resData.turnover,
-              intro:resData.intro
-            })
-          }
-        }).catch((error) => {
-          console.log(error)
-        })
+    getDetailInfor(id) {
+      Ajax({
+        url: '/produce/' + id,
+        method: 'get',
+        data: {
+          cateId: id
+        }
+      }).then((res) => {
+        if (res.data.code === 0) {
+          const resData = res.data.data;
+          this.setData({
+            imgUrls: resData.imgs,
+            turnover: resData.turnover,
+            intro: resData.intro
+          })
+        }
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+    getBuyInfor(id) {
+      Ajax({
+        url: '/produce/' + id+'/show',
+        method: 'get',
+        data: {
+          ps:1,
+          pn:10
+        }
+      }).then((res) => {
+        if (res.data.code === 0) {
+          const resData = res.data.data;
+          this.setData({
+            buyList:resData
+          })
+        }
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+    submitReserve(id){
+      wx.chooseAddress({
+        success:(res)=>{
+          Ajax({
+            url: '/reserve/' + id,
+            method: 'post',
+            data: {
+              produceId:id,
+              addr:{
+                cityName: res.cityName,
+                countyName: res.countyName,
+                detailInfo: res.detailInfo,
+                nationalCode: res.nationalCode,
+                postalCode: res.postalCode,
+                provinceName: res.provinceName,
+                telNumber: res.telNumber,
+                userName: res.userName
+              }
+            }
+          }).then((res) => {
+            if (res.data.code === 0) {
+              this.setData({
+                errorMessage: '预订成功',
+                errorMessageStatus: true
+              })
+            }
+          }).catch((error) => {
+            console.log(error)
+          })
+        }
+          
+      })
+      
     },
     submitTap(){
-      this.setData({
-        dialogShow:false
-      })
+      this.submitReserve(this.data.params.id)
+      // this.setData({
+      //   dialogShow:false
+      // })
     },
     bindNameInput(e){
       this.setData({

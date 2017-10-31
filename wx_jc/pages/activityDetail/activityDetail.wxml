@@ -1,5 +1,5 @@
 <view class="body nav-null">
-	<view class="p-top"><image src="{{activityImg}}" class="top-img"/></view>
-	<view class="p-title">{{activityTitle}}</view>
-	<view class="p-article">{{activityDetail}}</view>
+	<view class="p-top"><image src="{{imgs}}" class="top-img"/></view>
+	<view class="p-title">{{title}}</view>
+	<view class="p-article">{{intro}}</view>
 </view>

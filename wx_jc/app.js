@@ -7,7 +7,46 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
+    this.getConfig()
+
     this.getUserInfo()
+
+    this.getSetting()
+  },
+  getConfig(){
+    Ajax({
+      url: '/config',
+      method: 'get'
+    }).then((res) => {
+      const resData=res.data.data;
+      if(res.data.code==0){
+        Object.keys(resData).map((value,index)=>{
+          // wx.setStorage({
+          //   key: value,
+          //   data: resData[index]
+          // })
+          this.globalData[value] = resData[value]
+        })
+      }
+      
+    }).catch((error) => {
+
+    })
+  },
+  getSetting(){
+    // wx.getSetting({
+    //   success(res) {
+    //     console.log(res)
+    //     if (!res.authSetting['scope.record']) {
+    //       wx.authorize({
+    //         scope: 'scope.record',
+    //         success() {
+              
+    //         }
+    //       })
+    //     }
+    //   }
+    // })
   },
   getUserInfo:function(cb){
     var that = this
@@ -16,35 +55,67 @@ App({
     }else{
       //调用登录接口
       wx.login({
-        success(res) {
+        success:(res)=> {
           if (res.code) {
             const resCode=res.code
-            console.log(res.code)
-            Ajax({
-              url: '/user/login',
-              method: 'post',
-              data: {
-                code: resCode
-              }
-            }).then((res) => {
-                console.log(res)
-            }).catch((error) => {
-              
-            })
+            console.log(res.code,'=======')
+            this.getLogin(resCode)
           }
         }
       })
     }
   },
-  getUser(){
-          wx.getUserInfo({
-            success: function (res) {
-              console.log(res)
-              that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
-            }
-          })
+  getLogin(resCode){
+    Ajax({
+      url: '/auth/login',
+      method: 'get',
+      data: {
+        code: resCode
+      }
+    }).then((res) => {
+      const {localSession}=res.data.data
+      this.getAuthInfor(localSession)
+      console.log(res,'++++')
+    }).catch((error) => {
+
+    })
   },
+  getAuthInfor(localSession){
+    wx.getUserInfo({
+      success: (res) =>{
+        const { encryptedData,iv,rawData,signature,userInfo}=res;
+        console.log(res,'res')
+        Ajax({
+          url: '/auth/info',
+          method: 'post',
+          header:{
+            localSession: localSession
+          },
+          data: { 
+            encryptedData: encryptedData,
+            iv:iv,
+            rawData: rawData,
+            signature: signature,
+            userInfo: JSON.stringify(userInfo)
+          }
+        }).then((res) => {
+          console.log(res, '=========')
+        }).catch((error) => {
+
+        })
+      }
+    })
+    
+  },
+  // getUser(){
+  //   wx.getUserInfo({
+  //     success: function (res) {
+  //       console.log(res)
+  //       that.globalData.userInfo = res.userInfo
+  //       typeof cb == "function" && cb(that.globalData.userInfo)
+  //     }
+  //   })
+  // },
   globalData:{
     userInfo:null
   }
