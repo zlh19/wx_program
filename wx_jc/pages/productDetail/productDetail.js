@@ -3,13 +3,10 @@ import { Ajax } from './../../utils/ajax'
 import { Config } from './../../config/config'
 Page({
     data: {
+      localSession:'',
       Config: Config,
       params:{},
-      imgUrls: [
-        'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        'http://img06.tooopen.com/images/20160818/tooopen_sy_143912755726.jpg',
-        'http://img06.tooopen.com/images/20160818/tooopen_sy_143912755726.jpg'
-      ],
+      imgUrls: [],
       turnover:'',
       intro:'',
       indicatorDotsColor: '#F3F3F3',
@@ -40,6 +37,7 @@ Page({
       })
     },
     onLoad(option){
+     
       this.getUrlParams(option)
       this.getDetailInfor(this.data.params.id)
       this.getBuyInfor(this.data.params.id)
@@ -53,9 +51,13 @@ Page({
       })
     },
     getDetailInfor(id) {
+      const { localSession } = app.globalData
       Ajax({
         url: '/produce/' + id,
         method: 'get',
+        header:{
+          'localSession': localSession
+        },
         data: {
           cateId: id
         }
@@ -77,8 +79,8 @@ Page({
         url: '/produce/' + id+'/show',
         method: 'get',
         data: {
-          ps:1,
-          pn:10
+          pn: 10,
+          ps:1000
         }
       }).then((res) => {
         if (res.data.code === 0) {
@@ -92,23 +94,26 @@ Page({
       })
     },
     submitReserve(id){
+      const { localSession } = app.globalData
+      wx.showLoading()
       wx.chooseAddress({
         success:(res)=>{
+          wx.hideLoading()
           Ajax({
             url: '/reserve/' + id,
             method: 'post',
+            header:{
+              'localSession': localSession
+            },
             data: {
-              produceId:id,
-              addr:{
-                cityName: res.cityName,
-                countyName: res.countyName,
-                detailInfo: res.detailInfo,
-                nationalCode: res.nationalCode,
-                postalCode: res.postalCode,
-                provinceName: res.provinceName,
-                telNumber: res.telNumber,
-                userName: res.userName
-              }
+              cityName: res.cityName,
+              countyName: res.countyName,
+              detailInfo: res.detailInfo,
+              nationalCode: res.nationalCode,
+              postalCode: res.postalCode,
+              provinceName: res.provinceName,
+              telNumber: res.telNumber,
+              userName: res.userName
             }
           }).then((res) => {
             if (res.data.code === 0) {
@@ -116,6 +121,12 @@ Page({
                 errorMessage: '预订成功',
                 errorMessageStatus: true
               })
+              setTimeout(()=>{
+                this.setData({
+                  errorMessage: '',
+                  errorMessageStatus: false
+                })
+              },1000)
             }
           }).catch((error) => {
             console.log(error)
@@ -123,7 +134,6 @@ Page({
         }
           
       })
-      
     },
     submitTap(){
       this.submitReserve(this.data.params.id)
@@ -204,6 +214,13 @@ Page({
       this.setData({
         dialogShow:true
       })
+    },
+    onShareAppMessage() {
+      return {
+        title: '微信小程序',
+        desc: '最具人气的小程序',
+        path: '/pages/productDetail/productDetail?id=' + this.data.params.id
+      }
     }
     
 })

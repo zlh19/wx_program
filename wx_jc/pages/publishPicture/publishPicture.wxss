@@ -7,12 +7,25 @@ page{
 }
 
 
+
 .ipt-wrap{
   height:100rpx;
   border-bottom:1px solid #ebebeb;
   display:flex;
   align-items:center;
   background:#fff;
+}
+
+.picker-wrap{
+  position:relative;
+}
+.picker-wrap .picker-cate{
+   position:absolute;
+  left:0;
+  top:0;
+  height:100%;
+  width:100%;
+  z-index:10; 
 }
 
 .address-wrap{

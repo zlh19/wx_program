@@ -1,12 +1,12 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/productDetail/productDetail",
     "pages/publishPicture/publishPicture",
+    "pages/product/product",
+    "pages/productDetail/productDetail",
     "pages/mine/mine",
     "pages/mineMessage/mineMessage",
     "pages/sellMessage/sellMessage",
-    "pages/product/product",
     "pages/selectArea/selectArea",
     "pages/activityDetail/activityDetail",
     "pages/logs/logs"
@@ -16,5 +16,31 @@
     "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "#fff"
+  },
+  "tabBar": {
+    "color": "#373737",
+    "selectedColor": "#373737",
+    "borderStyle": "black",
+    "backgroundColor":"#fff",
+    "list": [
+      {
+        "selectedIconPath": "./imgs/nav-index-current.png",
+        "iconPath": "./imgs/nav-index.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "./imgs/nav-product-current.png",
+        "iconPath": "./imgs/nav-product.png",
+        "pagePath": "pages/product/product",
+        "text": "产品"
+      },
+      {
+        "selectedIconPath": "./imgs/nav-mine-current.png",
+        "iconPath": "./imgs/nav-mine.png",
+        "pagePath":"pages/mine/mine",
+        "text":"我的"
+      }
+    ]
   }
 }

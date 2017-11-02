@@ -1,17 +1,58 @@
-page{background:#eee;}
+page{
+  background:#eee;
+}
 
+.msg-null{
+  height:80rpx;
+  background:#fff;
+  line-height:80rpx;
+  text-align:center;
+  font-size:30rpx;
+}
 
-.msg-item{background:#fff;padding:0 20rpx;margin-top:20rpx;}
+.msg-item{
+  background:#fff;
+  padding:0 20rpx;
+  margin-top:20rpx;
+}
 
-.msg-item .msg-title{height:88rpx;line-height:88rpx;color: #373737;border-bottom:1px solid #ebebeb;position:relative;}
+.msg-item .msg-title{
+  height:88rpx;
+  line-height:88rpx;
+  color: #373737;
+  border-bottom:1px solid #ebebeb;
+  position:relative;
+}
 
-.msg-title .msg-name{display:inline;font-size:32rpx;font-weight:bold;vertical-align:middle}
+.msg-title .msg-name{
+  display:inline;
+  font-size:32rpx;
+  font-weight:bold;
+  vertical-align:middle;
+}
 
-.msg-title .msg-tel{display:inline;font-size:28rpx;margin-left:10rpx;vertical-align:middle}
+.msg-title .msg-tel{
+  display:inline;
+  font-size:28rpx;
+  margin-left:10rpx;
+  vertical-align:middle;
+}
 
-.msg-title .msg-timer{position:absolute;right:0;top:0;font-size:24rpx;color: #929292;}
+.msg-title .msg-timer{
+  position:absolute;
+  right:0;
+  top:0;
+  font-size:24rpx;
+  color: #929292;
+}
 
-.msg-item .msg-infor{padding:20rpx 0;}
+.msg-item .msg-infor{
+  padding:20rpx 0;
+}
 
-.msg-infor .u-text{line-height:40rpx;font-size:28rpx;color:#373737;}
+.msg-infor .u-text{
+  line-height:40rpx;
+  font-size:28rpx;
+  color:#373737;
+}
 

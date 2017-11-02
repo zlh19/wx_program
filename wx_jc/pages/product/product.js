@@ -75,6 +75,13 @@ Page({
       const currentId = e.currentTarget.dataset.id
       this.switchCate(currentIndex)
       this.getProduct(currentId)
+    },
+    onShareAppMessage() {
+      return {
+        title: '微信小程序',
+        desc: '最具人气的小程序',
+        path: '/pages/product/product'
+      }
     }
     
 })

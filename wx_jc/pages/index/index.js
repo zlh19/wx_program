@@ -15,7 +15,7 @@ Page({
       indicatorDots: true,
       autoplay: false,
       interval: 5000,
-      duration: 1000,
+      duration: 500,
       activityDataList:[]
     },
     onLoad(){
@@ -32,8 +32,8 @@ Page({
           const resData = res.data.data;
           this.setData({
             addressName: resData.placeName,
-            longitude: resData.placeLat,
-            latitude: resData.placeLong,
+            longitude: resData.placeLong,
+            latitude: resData.placeLat,
             imgUrls: resData.imgs,
             addressTel: resData.tel
           })
@@ -46,7 +46,10 @@ Page({
       Ajax({
         url: '/store/activities',
         method: 'get',
-        data: {}
+        data: {
+          ps:1000,
+          pn:10
+        }
       }).then((res) => {
         if (res.data.code === 0) {
           const resData = res.data.data;
@@ -65,8 +68,8 @@ Page({
     // 获取地图
     tapAddress(){
       wx.openLocation({
-        longitude: this.data.longitude,
-        latitude: this.data.latitude,
+        longitude: this.data.longitude *1,
+        latitude: this.data.latitude * 1,
         name:this.data.addressName,
         scale: 28
       })
@@ -76,6 +79,13 @@ Page({
         wx.makePhoneCall({
           phoneNumber:this.data.addressTel
         })
+    },
+    onShareAppMessage(){
+      return {
+        title: '微信小程序',
+        desc: '最具人气的小程序',
+        path: '/pages/index/index'
+      }
     }
     
 })

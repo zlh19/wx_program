@@ -1,15 +1,17 @@
 <view class="body nav-null">
-	<view class="p-list">
+	<view class="p-list" wx:if="{{messageListData.length>0}}">
 		<view class="msg-item" wx:for="{{messageListData}}" wx:key="unique">
 			<view class="msg-title">
-				<view class="msg-name">{{item.userName}}</view>
-				<view class="msg-tel">{{item.userTel}}</view>
-				<view class="msg-timer">{{item.userTimer}}</view>
+				<view class="msg-name">{{item.addr.userName}}</view>
+				<view class="msg-tel">{{item.addr.telNumber}}</view>
+				<view class="msg-timer">{{item.createtime}}</view>
 			</view>
 			<view class="msg-infor">
-				<view class="u-text">{{item.goodsText}}</view>
-				<view class="u-text">{{item.goodsName}}</view>
+				<view class="u-text">{{item.produceTitle}}</view>
+				<view class="u-text">{{item.produceId}}</view>
 			</view>
 		</view>
 	</view>
+  <!-- 为空 -->
+  <view class='msg-null' wx:else>暂无数据</view>
 </view>

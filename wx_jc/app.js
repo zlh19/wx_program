@@ -68,20 +68,22 @@ App({
         key: 'localSession',
         data: localSession
       })
+      this.globalData.storeManager = storeManager
+      this.globalData.localSession = localSession
       
     }).catch((error) => {
-
+        console.log(error,'++++')
     })
   },
   getAuthInfor(localSession){
     wx.getUserInfo({
       success: (res) =>{
         const { encryptedData,iv,rawData,signature,userInfo}=res;
-        console.log('登陆成功', res)
         wx.setStorage({
           key: 'userInfo',
           data: userInfo
         })
+        this.globalData.userInfo = userInfo
         Ajax({
           url: '/auth/info',
           method: 'post',
@@ -98,13 +100,33 @@ App({
         }).then((res) => {
           console.log('授权成功')
         }).catch((error) => {
-
         })
+      },
+      fail:(error)=>{
+        wx.showModal({
+          title: '警告',
+          content: '您点击了拒绝授权，将无法正常使用此功能体验。',
+          success: (res)=> {
+            if (res.confirm) {
+              wx.openSetting({
+                success: (res)=> {
+                  if (!res.authSetting["scope.userInfo"] || !res.authSetting["scope.userLocation"]) {
+                    this.getAuthInfor()
+                  }
+                }
+              })
+              console.log('用户点击确定')
+            }
+          }
+        })
+        
+        console.log(error)
       }
     })
     
   },
   globalData:{
-    userInfo:null
+    userInfo:null,
+    localSession:null
   }
 })

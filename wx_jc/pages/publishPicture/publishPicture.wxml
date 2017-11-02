@@ -1,33 +1,36 @@
 
 <view class="body">
-  <!-- 省市区 -->
-  <view class='ipt-wrap'>
-    <input type='text' class='ipt' placeholder='请填写产品分类' placeholder-class='ipt-placeholder' bindinput='bindCategoryInput'/>
-  </view>
-  <!-- 地址 -->
-  <view class='ipt-wrap'>
-    <input type='text' class='ipt' placeholder='请填写产品型号' placeholder-class='ipt-placeholder' bindinput='bindSizeInput'/>
-  </view>
-  <view class='upload-wrap'>
-    <view class='upload-title'>点击添加图片</view>
-    <view class='upload-list'>
-      <view class='img-wrap' wx:for="{{picList}}" wx:key="unique">
-        <image src="{{item}}" mode="aspectFit" class='upload-img'/>
-        <view class='icon-close' data-index="{{index}}" bindtap='deletePictureTap'></view>
-      </view>
-      <!-- 添加按钮 -->
-      <view class='upload-btn' bindtap='addPictureTap' wx:if="{{addPictureBtnShow}}"></view>
+  <form>
+    <!-- 请填写产品分类 -->
+    <view class='ipt-wrap picker-wrap'>
+         <input type='text' class='ipt' value="{{categoryValue}}" placeholder='请选择产品分类' placeholder-class='ipt-placeholder' disabled='disabled'/>   
+       <picker bindchange="bindPickerCategoryChange" range-key="cate" range="{{categoryList}}">
+       <view class="picker-cate"></view>
+       </picker>
     </view>
-  </view>
-  <!-- 地址 -->
-  <view class='ipt-wrap address-wrap' bindtap="getAddress">
-    <input type='text' class='ipt' placeholder='点击填写施工地址' placeholder-class='ipt-placeholder' disabled='disabled' value='{{bindAddressValue}}'/>
-    <view class='address-icon'></view>
-  </view>
-  <!-- 保存 -->
-  <view class='submit-btn' bindtap='publishSubmitTap'>发布</view>
-
-
+    <!-- 请填写产品型号 -->
+    <view class='ipt-wrap'>
+      <input type='text' class='ipt' value="{{sizeValue}}" placeholder='请填写产品型号' placeholder-class='ipt-placeholder' bindinput='bindSizeInput'/>
+    </view>
+    <view class='upload-wrap'>
+      <view class='upload-title'>点击添加图片</view>
+      <view class='upload-list'>
+        <view class='img-wrap' wx:for="{{picList}}" wx:key="unique">
+          <image src="{{item.imgPath}}" mode="aspectFit" class='upload-img'/>
+          <view class='icon-close' data-index="{{index}}" bindtap='deletePictureTap'></view>
+        </view>
+        <!-- 添加按钮 -->
+        <view class='upload-btn' bindtap='addPictureTap' wx:if="{{addPictureBtnShow}}"></view>
+      </view>
+    </view>
+    <!-- 地址 -->
+    <view class='ipt-wrap address-wrap' bindtap="getAddress">
+      <input type='text' class='ipt' placeholder='点击填写施工地址' placeholder-class='ipt-placeholder' disabled='disabled' value='{{bindAddressValue}}'/>
+      <view class='address-icon'></view>
+    </view>
+    <!-- 保存 -->
+    <view class='submit-btn' bindtap='publishSubmitTap'>发布</view>
+  </form>
 </view>
 
 <!-- 提示框 -->

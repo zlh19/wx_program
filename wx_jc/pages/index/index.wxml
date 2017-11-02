@@ -32,7 +32,7 @@
 	
 </view>
 <!-- 导航start -->
-	<view class="nav">
+	<!-- <view class="nav">
 		<navigator class="nav-item current" url="/">
       <view class="nav-icon icon-index"></view>
 			<view class="nav-text">首页</view>
@@ -40,14 +40,14 @@
 		<navigator class="nav-item" url="/pages/product/product">
       <view class="nav-icon icon-product"></view>
 			<view class="nav-text">产品</view>
-		</navigator>
+		</navigator> -->
 		<!-- <navigator class="nav-item" url="">
       <view class="nav-icon icon-find"></view>
 			<view class="nav-text">发现</view>
 		</navigator> -->
-		<navigator class="nav-item" url="/pages/mine/mine">
+		<!-- <navigator class="nav-item" url="/pages/mine/mine">
       <view class="nav-icon icon-mine"></view>
 			<view class="nav-text">我的</view>
 		</navigator>
-	</view>
+	</view> -->
   <!-- 导航end -->
