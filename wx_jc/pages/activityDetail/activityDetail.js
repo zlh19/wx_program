@@ -10,14 +10,15 @@ Page({
       intro: '',
       title: ''
     },
-    onLoad() {
-      this.getUrlParams()
+    onLoad(option) {
+      this.getUrlParams(option)
       this.getDetailInfor(this.data.params.id)
     },
-    getUrlParams() {
-      const urlParam = getCurrentPages()[1].options
+    getUrlParams(option) {
       this.setData({
-        params: urlParam
+        params: {
+          id:option.id
+        }
       })
     },
     getDetailInfor(id) {

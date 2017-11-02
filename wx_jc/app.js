@@ -11,7 +11,6 @@ App({
 
     this.getUserInfo()
 
-    this.getSetting()
   },
   getConfig(){
     Ajax({
@@ -33,21 +32,6 @@ App({
 
     })
   },
-  getSetting(){
-    // wx.getSetting({
-    //   success(res) {
-    //     console.log(res)
-    //     if (!res.authSetting['scope.record']) {
-    //       wx.authorize({
-    //         scope: 'scope.record',
-    //         success() {
-              
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
-  },
   getUserInfo:function(cb){
     var that = this
     if(this.globalData.userInfo){
@@ -58,7 +42,6 @@ App({
         success:(res)=> {
           if (res.code) {
             const resCode=res.code
-            console.log(res.code,'=======')
             this.getLogin(resCode)
           }
         }
@@ -73,9 +56,19 @@ App({
         code: resCode
       }
     }).then((res) => {
-      const {localSession}=res.data.data
+      console.log('登陆成功',res.data)
+      const { localSession, storeManager}=res.data.data
       this.getAuthInfor(localSession)
-      console.log(res,'++++')
+
+      wx.setStorage({
+        key: 'storeManager',
+        data: storeManager
+      })
+      wx.setStorage({
+        key: 'localSession',
+        data: localSession
+      })
+      
     }).catch((error) => {
 
     })
@@ -84,7 +77,11 @@ App({
     wx.getUserInfo({
       success: (res) =>{
         const { encryptedData,iv,rawData,signature,userInfo}=res;
-        console.log(res,'res')
+        console.log('登陆成功', res)
+        wx.setStorage({
+          key: 'userInfo',
+          data: userInfo
+        })
         Ajax({
           url: '/auth/info',
           method: 'post',
@@ -99,7 +96,7 @@ App({
             userInfo: JSON.stringify(userInfo)
           }
         }).then((res) => {
-          console.log(res, '=========')
+          console.log('授权成功')
         }).catch((error) => {
 
         })
@@ -107,15 +104,6 @@ App({
     })
     
   },
-  // getUser(){
-  //   wx.getUserInfo({
-  //     success: function (res) {
-  //       console.log(res)
-  //       that.globalData.userInfo = res.userInfo
-  //       typeof cb == "function" && cb(that.globalData.userInfo)
-  //     }
-  //   })
-  // },
   globalData:{
     userInfo:null
   }

@@ -10,6 +10,8 @@ Page({
         'http://img06.tooopen.com/images/20160818/tooopen_sy_143912755726.jpg',
         'http://img06.tooopen.com/images/20160818/tooopen_sy_143912755726.jpg'
       ],
+      turnover:'',
+      intro:'',
       indicatorDotsColor: '#F3F3F3',
       indicatorDotsActiveColor: '#F7AB00',
       indicatorDots: true,
@@ -19,21 +21,7 @@ Page({
       dialogShow:true,
       errorMessageStatus:false,
       errorMessage:'',
-      buyList: [{
-        title: 'asdf',
-        time: '2017.8.10',
-        imgs: [
-          'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-          'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-          'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg']
-      }, {
-        title: 'asdf',
-        time: '2017.8.10',
-        imgs: [
-          'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-          'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-          'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg']
-      }],
+      buyList: [],
       iptNameValue:'',
       iptTelValue:'',
       iptCodeValue:'',
@@ -51,17 +39,17 @@ Page({
         urls: pictureList // 需要预览的图片http链接列表
       })
     },
-    onLoad(){
-      this.getUrlParams()
+    onLoad(option){
+      this.getUrlParams(option)
       this.getDetailInfor(this.data.params.id)
       this.getBuyInfor(this.data.params.id)
       
     },
-    getUrlParams(){
-      const urlParam = getCurrentPages()[2].options
-      console.log(getCurrentPages())
+    getUrlParams(option){
       this.setData({
-        params: urlParam
+        params:{
+          id:option.id
+        }
       })
     },
     getDetailInfor(id) {

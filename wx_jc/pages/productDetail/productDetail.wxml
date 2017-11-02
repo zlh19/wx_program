@@ -13,7 +13,7 @@
 	
 	<!-- address -->
 	<view class="p-infor">
-		<view class="u-number"><view class="u-icon"></view>已成交100用户</view>
+		<view class="u-number"><view class="u-icon"></view>已成交{{turnover}}用户</view>
     <view class="u-text">{{intro}}</view>
 	</view>
 
