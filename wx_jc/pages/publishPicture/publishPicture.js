@@ -1,9 +1,10 @@
 var app = getApp()
 import { Ajax } from './../../utils/ajax'
-import { Config } from './../../config/config.js'
+// import { Config } from './../../config/config.js'
 
 Page({
   data: {
+    Config:{},
     categoryList: [],
     categoryId:'',
     addPictureBtnShow:true,
@@ -17,6 +18,12 @@ Page({
     errorMessage: ''
   },
   onLoad(){
+    this.setData({
+      Config: {
+        hosts: app.globalData.imageUrl
+      }
+    })
+    
     this.getCate()
   },
   bindPickerCategoryChange(e){
@@ -206,6 +213,9 @@ Page({
           this.setData({
             errorMessage: '',
             errorMessageStatus: false
+          })
+          wx.reLaunch({
+            url: '../index/index'
           })
         }, 1000)
       }else{

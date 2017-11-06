@@ -1,10 +1,11 @@
 var app = getApp()
 import { Ajax } from './../../utils/ajax'
 import { Config } from './../../config/config'
+import { formatTime } from './../../utils/util.js'
 Page({
     data: {
       localSession:'',
-      Config: Config,
+      Config: {},
       params:{},
       imgUrls: [],
       turnover:'',
@@ -27,17 +28,37 @@ Page({
       initTime:60,
       totalTime:60
     },
-    tapBanner(e){
+    tapBanner(e) {
       const currentPicture = e.currentTarget.dataset.picture;
       const pictureList = this.data.imgUrls;
-      console.log(pictureList,currentPicture)
+      const newPictrueList = pictureList.map((item, index) => {
+        return this.data.Config.hosts + item
+      })
+      console.log(newPictrueList, currentPicture)
       wx.previewImage({
         current: currentPicture, // 当前显示图片的http链接
-        urls: pictureList // 需要预览的图片http链接列表
+        urls: newPictrueList // 需要预览的图片http链接列表
+      })
+    },
+    tapBuyShowPicture(e) {
+      const currentPicture = e.currentTarget.dataset.picture;
+      const pictureList = e.currentTarget.dataset.picturelist;;
+      const newPictrueList=pictureList.map((item,index)=>{
+        return this.data.Config.hosts + item
+      })
+      console.log(newPictrueList, currentPicture)
+      wx.previewImage({
+        current: currentPicture, // 当前显示图片的http链接
+        urls: newPictrueList // 需要预览的图片http链接列表
       })
     },
     onLoad(option){
-     
+      this.setData({
+        Config: {
+          hosts: app.globalData.imageUrl
+        }
+      })
+      
       this.getUrlParams(option)
       this.getDetailInfor(this.data.params.id)
       this.getBuyInfor(this.data.params.id)
@@ -79,12 +100,15 @@ Page({
         url: '/produce/' + id+'/show',
         method: 'get',
         data: {
-          pn: 10,
+          pn: 1,
           ps:1000
         }
       }).then((res) => {
         if (res.data.code === 0) {
           const resData = res.data.data;
+          resData.map((item, index) => {
+            item.createtime = formatTime(new Date(item.createtime))
+          })
           this.setData({
             buyList:resData
           })
@@ -126,6 +150,9 @@ Page({
                   errorMessage: '',
                   errorMessageStatus: false
                 })
+                wx.reLaunch({
+                  url: '../mineMessage/mineMessage'
+                })
               },1000)
             }
           }).catch((error) => {
@@ -136,6 +163,7 @@ Page({
       })
     },
     submitTap(){
+
       this.submitReserve(this.data.params.id)
       // this.setData({
       //   dialogShow:false

@@ -2,6 +2,7 @@ var app = getApp()
 import { Ajax } from './../../utils/ajax'
 Page({
     data: {
+      Config:{},
       params:{},        
       begintime: '',
       endtime: '',
@@ -11,6 +12,11 @@ Page({
       title: ''
     },
     onLoad(option) {
+      this.setData({
+        Config: {
+          hosts: app.globalData.imageUrl
+        }
+      })
       this.getUrlParams(option)
       this.getDetailInfor(this.data.params.id)
     },

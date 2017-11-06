@@ -1,10 +1,10 @@
 var app = getApp()
 import {Ajax} from './../../utils/ajax'
 import { formatTime } from './../../utils/util.js'
-import { Config } from './../../config/config'
+// import { Config } from './../../config/config'
 Page({
     data: {
-      Config:Config,
+      Config:{},
       addressName: '',
       addressTel: '',
       longitude: 0,
@@ -19,6 +19,11 @@ Page({
       activityDataList:[]
     },
     onLoad(){
+      this.setData({
+        Config:{
+          hosts: app.globalData.imageUrl
+        }
+      })
       this.getUserInfor()
       this.getActivityInfor()
     },
@@ -48,7 +53,7 @@ Page({
         method: 'get',
         data: {
           ps:1000,
-          pn:10
+          pn:1
         }
       }).then((res) => {
         if (res.data.code === 0) {
@@ -71,7 +76,8 @@ Page({
         longitude: this.data.longitude *1,
         latitude: this.data.latitude * 1,
         name:this.data.addressName,
-        scale: 28
+        address: this.data.addressName,
+        scale:15
       })
     },
     // 打电话

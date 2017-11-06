@@ -1,14 +1,22 @@
 var app = getApp()
 import { Ajax } from './../../utils/ajax'
+// import { Config } from './../../config/config'
 Page({
     data: {
+      Config: {},
       cateList:[],
       productList:[]
     },
     onLoad() {
-     this.getCate((id)=>{
-       this.getProduct(id)
-     })
+      this.setData({
+        Config: {
+          hosts: app.globalData.imageUrl
+        }
+      })
+
+      this.getCate((id)=>{
+        this.getProduct(id)
+      })
     },
     getProduct(id){
       Ajax({

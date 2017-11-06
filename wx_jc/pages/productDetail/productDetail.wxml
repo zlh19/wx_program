@@ -5,7 +5,7 @@
 		<swiper class="swiper" indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorDotsColor}}"  indicator-active-color="{{indicatorDotsActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
 		  <block wx:for="{{imgUrls}}" wx:key="unique">
 		    <swiper-item>
-		      <image src="{{item}}" class="slide-image" data-picture="{{item}}"  bindtap='tapBanner'/>
+		      <image src="{{Config.hosts}}{{item}}" class="slide-image" data-picture="{{Config.hosts}}{{item}}" bindtap='tapBanner'/>
 		    </swiper-item>
 		  </block>
 		</swiper>
@@ -27,7 +27,7 @@
         <view class="u-title-time">{{items.createtime}}</view>
       </view>
       <view class="u-item-pic-group">
-        <view class="u-item-pic-wrap" wx:for="{{items.imgs}}" wx:key="unique" wx:for-item="item"><image src="{{Config.hosts}}{{item}}" class="u-item-pic" mode="aspectFit" /></view>
+        <view class="u-item-pic-wrap" wx:for="{{items.imgs}}" wx:key="unique" wx:for-item="item"><image src="{{Config.hosts}}{{item}}" class="u-item-pic" mode="aspectFit" data-picturelist='{{items.imgs}}' data-picture="{{Config.hosts}}{{item}}" bindtap='tapBuyShowPicture'/></view>
       </view>
     </view>
 	</view>

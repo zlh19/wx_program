@@ -7,12 +7,14 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    this.getConfig()
+    this.getConfig(()=>{
+      this.getUserInfo()
+    })
 
-    this.getUserInfo()
+    
 
   },
-  getConfig(){
+  getConfig(cb){
     Ajax({
       url: '/config',
       method: 'get'
@@ -26,6 +28,7 @@ App({
           // })
           this.globalData[value] = resData[value]
         })
+        cb&&cb()
       }
       
     }).catch((error) => {
@@ -59,7 +62,8 @@ App({
       console.log('登陆成功',res.data)
       const { localSession, storeManager}=res.data.data
       this.getAuthInfor(localSession)
-
+      console.log(res.data.data)
+      console.log('storeManager--权限',storeManager)
       wx.setStorage({
         key: 'storeManager',
         data: storeManager
