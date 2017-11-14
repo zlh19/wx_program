@@ -5,7 +5,7 @@ import { formatTime } from './../../utils/util.js'
 Page({
     data: {
       localSession:'',
-      Config: {},
+      Config: Config,
       params:{},
       imgUrls: [],
       turnover:'',
@@ -15,7 +15,7 @@ Page({
       indicatorDots: true,
       autoplay: false,
       interval: 5000,
-      duration: 1000,
+      duration: 500,
       dialogShow:true,
       errorMessageStatus:false,
       errorMessage:'',
@@ -42,22 +42,26 @@ Page({
     },
     tapBuyShowPicture(e) {
       const currentPicture = e.currentTarget.dataset.picture;
-      const pictureList = e.currentTarget.dataset.picturelist;;
-      const newPictrueList=pictureList.map((item,index)=>{
-        return this.data.Config.hosts + item
+      let pictureList = [];
+      this.data.buyList.map((item,index)=>{
+        const hostImgs=item.imgs.map((items,indexs)=>{
+            return this.data.Config.hosts+items
+        });
+        pictureList = [...pictureList, ...hostImgs]
       })
-      console.log(newPictrueList, currentPicture)
+
+      console.log(pictureList,currentPicture)
       wx.previewImage({
         current: currentPicture, // 当前显示图片的http链接
-        urls: newPictrueList // 需要预览的图片http链接列表
+        urls: pictureList // 需要预览的图片http链接列表
       })
     },
     onLoad(option){
-      this.setData({
-        Config: {
-          hosts: app.globalData.imageUrl
-        }
-      })
+      // this.setData({
+      //   Config: {
+      //     hosts: app.globalData.imageUrl
+      //   }
+      // })
       
       this.getUrlParams(option)
       this.getDetailInfor(this.data.params.id)
@@ -150,7 +154,7 @@ Page({
                   errorMessage: '',
                   errorMessageStatus: false
                 })
-                wx.reLaunch({
+                wx.navigateTo({
                   url: '../mineMessage/mineMessage'
                 })
               },1000)

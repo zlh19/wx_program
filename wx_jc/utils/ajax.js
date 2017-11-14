@@ -1,5 +1,19 @@
 import {Config} from '../config/config.js'
 
+const dialogShow=function(){
+  wx.showModal({
+    title: '提示',
+    content: '您的小程序已过期',
+    success: (res) => {
+      if (res.confirm) {
+        dialogShow()
+      } else if (res.cancel) {
+        dialogShow()
+      }
+    }
+  })
+}
+
 const Ajax=function(obj){
     const url = (Config.hosts+obj.url)||'';
     const data=obj.data||{};
@@ -20,7 +34,11 @@ const Ajax=function(obj){
             method:method,
             header: header,
             success:(res)=>{
-              resolve(res)
+              if(res.data.code==1004){
+                dialogShow()
+              }else{
+                resolve(res)
+              }
             },
             fail:(error)=>{
               reject(error)

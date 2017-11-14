@@ -7,11 +7,9 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    this.getConfig(()=>{
-      this.getUserInfo()
-    })
+    this.getConfig()
 
-    
+    this.getUserInfo()
 
   },
   getConfig(cb){

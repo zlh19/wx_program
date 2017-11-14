@@ -1,10 +1,10 @@
 var app = getApp()
 import { Ajax } from './../../utils/ajax'
-// import { Config } from './../../config/config.js'
+import { Config } from './../../config/config.js'
 
 Page({
   data: {
-    Config:{},
+    Config: Config,
     categoryList: [],
     categoryId:'',
     addPictureBtnShow:true,
@@ -18,11 +18,11 @@ Page({
     errorMessage: ''
   },
   onLoad(){
-    this.setData({
-      Config: {
-        hosts: app.globalData.imageUrl
-      }
-    })
+    // this.setData({
+    //   Config: {
+    //     hosts: app.globalData.imageUrl
+    //   }
+    // })
     
     this.getCate()
   },
@@ -57,7 +57,7 @@ Page({
   },
   addPictureTap(){
     wx.chooseImage({
-      sizeType: ['original', 'compressed'],
+      sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
       count: 1,
       success:(res)=>{

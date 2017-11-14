@@ -1,14 +1,15 @@
 var app = getApp()
 import {Ajax} from './../../utils/ajax'
 import { formatTime } from './../../utils/util.js'
-// import { Config } from './../../config/config'
+import { Config } from './../../config/config'
 Page({
     data: {
-      Config:{},
+      Config: Config,
       addressName: '',
       addressTel: '',
       longitude: 0,
       latitude: 0,
+      title:'',
       imgUrls: [],
       indicatorDotsColor:'#F3F3F3',
       indicatorDotsActiveColor:'#F7AB00',
@@ -19,11 +20,11 @@ Page({
       activityDataList:[]
     },
     onLoad(){
-      this.setData({
-        Config:{
-          hosts: app.globalData.imageUrl
-        }
-      })
+      // this.setData({
+      //   Config:{
+      //     hosts: app.globalData.imageUrl
+      //   }
+      // })
       this.getUserInfor()
       this.getActivityInfor()
     },
@@ -40,6 +41,7 @@ Page({
             longitude: resData.placeLong,
             latitude: resData.placeLat,
             imgUrls: resData.imgs,
+            title: resData.title,
             addressTel: resData.tel
           })
         }
@@ -75,7 +77,7 @@ Page({
       wx.openLocation({
         longitude: this.data.longitude *1,
         latitude: this.data.latitude * 1,
-        name:this.data.addressName,
+        name: this.data.title,
         address: this.data.addressName,
         scale:15
       })
