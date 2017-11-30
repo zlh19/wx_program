@@ -86,7 +86,7 @@ Page({
     })
   },
   uploadPicture(imgPath){
-    const uploadUrl = Config.hosts + 'seller/upload';
+    const uploadUrl = Config.imgHosts + 'seller/upload';
     const { localSession } = app.globalData;
     const picObj={
       'imgPath': imgPath,

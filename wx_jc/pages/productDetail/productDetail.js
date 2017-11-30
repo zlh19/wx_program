@@ -32,7 +32,7 @@ Page({
       const currentPicture = e.currentTarget.dataset.picture;
       const pictureList = this.data.imgUrls;
       const newPictrueList = pictureList.map((item, index) => {
-        return this.data.Config.hosts + item
+        return this.data.Config.imgHosts + item
       })
       console.log(newPictrueList, currentPicture)
       wx.previewImage({
@@ -45,7 +45,7 @@ Page({
       let pictureList = [];
       this.data.buyList.map((item,index)=>{
         const hostImgs=item.imgs.map((items,indexs)=>{
-            return this.data.Config.hosts+items
+          return this.data.Config.imgHosts+items
         });
         pictureList = [...pictureList, ...hostImgs]
       })

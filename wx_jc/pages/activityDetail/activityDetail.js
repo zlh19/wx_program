@@ -1,8 +1,9 @@
 var app = getApp()
 import { Ajax } from './../../utils/ajax'
+import { Config } from './../../config/config'
 Page({
     data: {
-      Config:{},
+      Config: Config,
       params:{},        
       begintime: '',
       endtime: '',
@@ -12,11 +13,11 @@ Page({
       title: ''
     },
     onLoad(option) {
-      this.setData({
-        Config: {
-          hosts: app.globalData.imageUrl
-        }
-      })
+      // this.setData({
+      //   Config: {
+      //     hosts: app.globalData.imageUrl
+      //   }
+      // })
       this.getUrlParams(option)
       this.getDetailInfor(this.data.params.id)
     },

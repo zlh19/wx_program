@@ -5,7 +5,7 @@
 		<swiper class="swiper" indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorDotsColor}}"  indicator-active-color="{{indicatorDotsActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
 		  <block wx:for="{{imgUrls}}" wx:key="unique">
 		    <swiper-item>
-		      <image src="{{Config.hosts}}{{item}}" class="slide-image" height="150"/>
+		      <image src="{{Config.imgHosts}}{{item}}" class="slide-image" height="150"/>
 		    </swiper-item>
 		  </block>
 		</swiper>
@@ -23,7 +23,7 @@
 
 		<!-- 列表 -->
 		<navigator class="item" url="/pages/activityDetail/activityDetail?id={{item.id}}" wx:for="{{activityDataList}}" wx:key="unique">
-			<image src="{{Config.hosts}}{{item.img}}" class="item-img"/>
+			<image src="{{Config.imgHosts}}{{item.img}}" class="item-img"/>
 			<view class="u-infor">{{item.title}}</view>
 			<view class="u-time"><image class="u-timer" src="./imgs/timer.png"></image>{{item.begintime}}-{{item.endtime}}</view>
 		</navigator>
