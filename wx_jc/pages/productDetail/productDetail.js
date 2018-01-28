@@ -72,6 +72,7 @@ Page({
       this.setData({
         params:{
           id:option.id
+          // id:12//临时方案
         }
       })
     },

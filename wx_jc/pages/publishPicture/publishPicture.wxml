@@ -5,12 +5,16 @@
     <view class='ipt-wrap picker-wrap'>
          <input type='text' class='ipt' value="{{categoryValue}}" placeholder='请选择产品分类' placeholder-class='ipt-placeholder' disabled='disabled'/>   
        <picker bindchange="bindPickerCategoryChange" range-key="cate" range="{{categoryList}}">
-       <view class="picker-cate"></view>
+        <view class="picker-cate"></view>
        </picker>
     </view>
     <!-- 请填写产品型号 -->
-    <view class='ipt-wrap'>
-      <input type='text' class='ipt' value="{{sizeValue}}" placeholder='请填写产品型号' placeholder-class='ipt-placeholder' bindinput='bindSizeInput'/>
+    <view class='ipt-wrap picker-wrap'>
+      <!-- <input type='text' class='ipt' value="{{sizeValue}}" placeholder='请填写产品型号' placeholder-class='ipt-placeholder' bindinput='bindSizeInput'/> -->
+      <input type='text' class='ipt' value="{{sizeValue}}" placeholder='请填写产品型号' placeholder-class='ipt-placeholder' disabled='disabled'/>   
+       <picker bindchange="bindPickerSizeChange" range-key="model" range="{{sizeList}}">
+        <view class="picker-cate"></view>
+       </picker>
     </view>
     <view class='upload-wrap'>
       <view class='upload-title'>点击添加图片</view>

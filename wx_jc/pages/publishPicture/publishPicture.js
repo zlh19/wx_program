@@ -7,6 +7,7 @@ Page({
     Config: Config,
     categoryList: [],
     categoryId:'',
+    sizeList:[],
     addPictureBtnShow:true,
     categoryValue:'',
     sizeValue:'',
@@ -33,6 +34,8 @@ Page({
       categoryValue: categoryValue,
       categoryId: categoryId
     })
+    
+    this.getSize(this.data.categoryId)
   },
   getCate() {
     Ajax({
@@ -42,6 +45,28 @@ Page({
       if (res.data.code === 0) {
         this.setData({
           'categoryList': res.data.data
+        })
+      }
+    }).catch((error) => {
+      console.log(error)
+    })
+  },
+  bindPickerSizeChange(e) {
+    const sizeValue = this.data.sizeList[e.detail.value].model
+    const sizeId = this.data.sizeList[e.detail.value].id
+    this.setData({
+      sizeValue: sizeValue,
+      sizeId: sizeId
+    })
+  },
+  getSize(cateId){
+    Ajax({
+      url: '/cate/' + cateId,
+      method: 'get'
+    }).then((res) => {
+      if (res.data.code === 0) {
+        this.setData({
+          'sizeList': res.data.data
         })
       }
     }).catch((error) => {
@@ -61,6 +86,7 @@ Page({
       sourceType: ['album', 'camera'],
       count: 1,
       success:(res)=>{
+        console.log(res, 'wxchooseImage')
         const imgPath = res.tempFilePaths
         // const picArr = [...this.data.picList, ...imgPath];
         const imgSize = this.data.picList.length;
@@ -86,12 +112,14 @@ Page({
     })
   },
   uploadPicture(imgPath){
-    const uploadUrl = Config.imgHosts + 'seller/upload';
+    // const uploadUrl = Config.imgHosts + 'seller/upload';
+    const uploadUrl = Config.hosts+'seller/upload';
     const { localSession } = app.globalData;
     const picObj={
       'imgPath': imgPath,
       'id':''
     }
+    console.log(imgPath, Config.publicParams.sid, localSession,'param')
     wx.uploadFile({
       url: uploadUrl,
       filePath: imgPath[0],
@@ -101,6 +129,7 @@ Page({
         'localSession': localSession
       },
       success:  (res)=> {
+        console.log(res,'seller/upload')
         const resData=JSON.parse(res.data);
         if (resData.code==0){
           const { id, relativePath } = resData.data;

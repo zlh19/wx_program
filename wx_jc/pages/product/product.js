@@ -20,20 +20,39 @@ Page({
     },
     getProduct(id){
       Ajax({
-        url: '/cate/'+id,
+        url: '/produce/',
         method: 'get',
         data: {
-          cateId:id
+          cateId: id,
+          keyword:'',
+          pn:1,
+          ps:100
         }
       }).then((res) => {
         if (res.data.code === 0) {
           this.setData({
-            productList:res.data.data
+            productList: res.data.data
           })
         }
       }).catch((error) => {
         console.log(error)
       })
+
+      // Ajax({
+      //   url: '/cate/' + id,
+      //   method: 'get',
+      //   data: {
+      //     cateId: id
+      //   }
+      // }).then((res) => {
+      //   if (res.data.code === 0) {
+      //     this.setData({
+      //       productList: res.data.data
+      //     })
+      //   }
+      // }).catch((error) => {
+      //   console.log(error)
+      // })
     },
     getCate(callback){
       Ajax({

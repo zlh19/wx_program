@@ -10,7 +10,7 @@
       <navigator url="/pages/productDetail/productDetail?id={{item.id}}" class="pro-item" wx:for="{{productList}}" wx:key="unique">
         <image src="{{Config.imgHosts}}{{item.img}}" class="pro-img"></image>
         <view class="pro-infor">
-          <view class="pro-title">{{item.model}}</view>
+          <view class="pro-title">{{item.title}}</view>
           <view class="pro-number">已成交{{item.turnover}}用户</view>
         </view>
       </navigator>
