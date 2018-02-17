@@ -60,16 +60,7 @@ App({
       console.log('登陆成功',res.data)
       const { localSession, storeManager}=res.data.data
       this.getAuthInfor(localSession)
-      console.log(res.data.data)
       console.log('storeManager--权限',storeManager)
-      wx.setStorage({
-        key: 'storeManager',
-        data: storeManager
-      })
-      wx.setStorage({
-        key: 'localSession',
-        data: localSession
-      })
       this.globalData.storeManager = storeManager
       this.globalData.localSession = localSession
       
@@ -81,10 +72,6 @@ App({
     wx.getUserInfo({
       success: (res) =>{
         const { encryptedData,iv,rawData,signature,userInfo}=res;
-        wx.setStorage({
-          key: 'userInfo',
-          data: userInfo
-        })
         this.globalData.userInfo = userInfo
         Ajax({
           url: '/auth/info',
@@ -129,6 +116,8 @@ App({
   },
   globalData:{
     userInfo:null,
-    localSession:null
+    storeManager:null,
+    localSession:null,
+    value:null
   }
 })

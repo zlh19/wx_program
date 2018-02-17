@@ -7,7 +7,6 @@
     "pages/mine/mine",
     "pages/mineMessage/mineMessage",
     "pages/sellMessage/sellMessage",
-    "pages/selectArea/selectArea",
     "pages/activityDetail/activityDetail",
     "pages/logs/logs"
   ],

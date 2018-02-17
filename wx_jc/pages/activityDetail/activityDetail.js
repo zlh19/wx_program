@@ -13,11 +13,6 @@ Page({
       title: ''
     },
     onLoad(option) {
-      // this.setData({
-      //   Config: {
-      //     hosts: app.globalData.imageUrl
-      //   }
-      // })
       this.getUrlParams(option)
       this.getDetailInfor(this.data.params.id)
     },
@@ -32,8 +27,7 @@ Page({
       Ajax({
         url: '/store/activities/' + id,
         method: 'get',
-        data: {
-        }
+        data: {}
       }).then((res) => {
         if (res.data.code === 0) {
           const resData = res.data.data;
@@ -50,12 +44,10 @@ Page({
         console.log(error)
       })
     },
+    // 分享
     onShareAppMessage() {
-      return {
-        title: '微信小程序',
-        desc: '最具人气的小程序',
-        path: '/pages/activityDetail/activityDetail?id=' + this.data.params.id
-      }
+      const sharePathParam =this.data.params.id
+      return setShareData('activityDetail', sharePathParam)
     }
     
 })

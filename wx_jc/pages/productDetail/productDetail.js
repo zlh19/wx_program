@@ -30,8 +30,8 @@ Page({
     },
     tapBanner(e) {
       const currentPicture = e.currentTarget.dataset.picture;
-      const pictureList = this.data.imgUrls;
-      const newPictrueList = pictureList.map((item, index) => {
+      const pictureList = this.data.imgUrls||[];
+      let newPictrueList = pictureList.map((item, index) => {
         return this.data.Config.imgHosts + item
       })
       console.log(newPictrueList, currentPicture)
@@ -110,7 +110,7 @@ Page({
         }
       }).then((res) => {
         if (res.data.code === 0) {
-          const resData = res.data.data;
+          const resData = res.data.data||[];
           resData.map((item, index) => {
             item.createtime = formatTime(new Date(item.createtime))
           })

@@ -1,7 +1,7 @@
 var app = getApp()
 import {Ajax} from './../../utils/ajax'
 import { formatTime } from './../../utils/util.js'
-import { Config } from './../../config/config'
+import { Config, setShareData } from './../../config/config'
 Page({
     data: {
       Config: Config,
@@ -17,14 +17,17 @@ Page({
       autoplay: false,
       interval: 5000,
       duration: 500,
-      activityDataList:[]
+      // 活动传参
+      activityOptions:{
+        ps: 10,
+        pn: 1
+      },
+      // 活动返回值
+      activityResposeData: {},
+      // 活动返回值列表
+      activityDataList: [],
     },
     onLoad(){
-      // this.setData({
-      //   Config:{
-      //     hosts: app.globalData.imageUrl
-      //   }
-      // })
       this.getUserInfor()
       this.getActivityInfor()
     },
@@ -53,10 +56,7 @@ Page({
       Ajax({
         url: '/store/activities',
         method: 'get',
-        data: {
-          ps:1000,
-          pn:1
-        }
+        data:this.data.activityOptions
       }).then((res) => {
         if (res.data.code === 0) {
           const resData = res.data.data;
@@ -65,7 +65,8 @@ Page({
             item.endtime = formatTime(new Date(item.endtime))
           })
           this.setData({
-            activityDataList: resData
+            activityResposeData:res.data,
+            activityDataList: [...this.data.activityDataList, ...resData]
           })
         }
       }).catch((error) => {
@@ -88,12 +89,18 @@ Page({
           phoneNumber:this.data.addressTel
         })
     },
+    // 分享
     onShareAppMessage(){
-      return {
-        title: '微信小程序',
-        desc: '最具人气的小程序',
-        path: '/pages/index/index'
-      }
+      return setShareData('index')
+    },
+    // 滚动至底部
+    onReachBottom(){
+      const activityLength = this.data.activityDataList.length;
+      const activitytotalCount=this.data.activityResposeData.tc;
+      if (activityLength < activitytotalCount){
+        this.data.activityOptions.pn++
+        this.getActivityInfor()
+      }  
     }
     
 })
