@@ -4,7 +4,12 @@ import { formatTime } from './../../utils/util.js'
 
 Page({
     data: {
-        messageListData:[]
+      messageOptions: {
+        pn: 1,
+        ps: 10
+      },
+      messageResponseData: {},
+      messageListData: []
     },
     onLoad(){
       this.getMessageInfor()
@@ -17,10 +22,7 @@ Page({
         header:{
           'localSession': localSession
         },
-        data: {
-          pn:1,
-          ps:1000
-        }
+        data: this.data.messageOptions
       }).then((res) => {
         if (res.data.code === 0) {
           const resData = res.data.data;
@@ -28,12 +30,22 @@ Page({
             item.createtime = formatTime(new Date(item.createtime))
           })
           this.setData({
-            messageListData:resData
+            'messageResponseData': res.data,
+            'messageListData': [...this.data.messageListData, ...resData]
           })
         }
       }).catch((error) => {
         console.log(error)
       })
+    },
+    // 滚动至底部
+    onReachBottom() {
+      const messageLength = this.data.messageListData.length;
+      const messagetotalCount = this.data.messageResponseData.tc;
+      if (messageLength < messagetotalCount) {
+        this.data.messageOptions.pn++
+        this.getMessageInfor()
+      }
     }
     
 })

@@ -1,11 +1,12 @@
 var app = getApp()
 import { Ajax } from './../../utils/ajax'
-import { Config } from './../../config/config'
+import { Config, setShareData } from './../../config/config'
 import { formatTime } from './../../utils/util.js'
 Page({
     data: {
       localSession:'',
       Config: Config,
+      //url参数
       params:{},
       imgUrls: [],
       turnover:'',
@@ -19,14 +20,23 @@ Page({
       dialogShow:true,
       errorMessageStatus:false,
       errorMessage:'',
+      detailOptions: {
+        cateId: ''
+      },
+      buyShowOptions: {
+        pn: 1,
+        ps: 10
+      },
       buyList: [],
+      buyResponseData:{},
       iptNameValue:'',
       iptTelValue:'',
       iptCodeValue:'',
       btnCodeDisabled:'',
       btnCodeText:'获取验证码',
       initTime:60,
-      totalTime:60
+      totalTime:60,
+      
     },
     tapBanner(e) {
       const currentPicture = e.currentTarget.dataset.picture;
@@ -57,22 +67,18 @@ Page({
       })
     },
     onLoad(option){
-      // this.setData({
-      //   Config: {
-      //     hosts: app.globalData.imageUrl
-      //   }
-      // })
-      
       this.getUrlParams(option)
       this.getDetailInfor(this.data.params.id)
       this.getBuyInfor(this.data.params.id)
-      
     },
     getUrlParams(option){
       this.setData({
         params:{
           id:option.id
           // id:12//临时方案
+        },
+        detailOptions:{
+          cateId:option.id
         }
       })
     },
@@ -84,9 +90,7 @@ Page({
         header:{
           'localSession': localSession
         },
-        data: {
-          cateId: id
-        }
+        data:this.data.detailOptions
       }).then((res) => {
         if (res.data.code === 0) {
           const resData = res.data.data;
@@ -104,10 +108,7 @@ Page({
       Ajax({
         url: '/produce/' + id+'/show',
         method: 'get',
-        data: {
-          pn: 1,
-          ps:1000
-        }
+        data:this.data.buyShowOptions
       }).then((res) => {
         if (res.data.code === 0) {
           const resData = res.data.data||[];
@@ -115,7 +116,9 @@ Page({
             item.createtime = formatTime(new Date(item.createtime))
           })
           this.setData({
-            buyList:resData
+            'buyResponseData': res.data,
+            'buyList': [...this.data.buyList, ...resData]
+            
           })
         }
       }).catch((error) => {
@@ -126,8 +129,10 @@ Page({
       const { localSession } = app.globalData
       wx.showLoading()
       wx.chooseAddress({
-        success:(res)=>{
+        complete:()=>{
           wx.hideLoading()
+        },
+        success:(res)=>{
           Ajax({
             url: '/reserve/' + id,
             method: 'post',
@@ -248,11 +253,18 @@ Page({
         dialogShow:true
       })
     },
+    // 分享
     onShareAppMessage() {
-      return {
-        title: '微信小程序',
-        desc: '最具人气的小程序',
-        path: '/pages/productDetail/productDetail?id=' + this.data.params.id
+      const sharePathParam = this.data.params.id
+      return setShareData('productDetail', sharePathParam)
+    },
+    // 滚动至底部
+    onReachBottom() {
+      const buyLength = this.data.buyList.length;
+      const buytotalCount = this.data.buyResposeData.tc;
+      if (buyLength < buytotalCount) {
+        this.data.buyShowOptions.pn++
+        this.getBuyInfor(this.data.params.id)
       }
     }
     

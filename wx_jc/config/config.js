@@ -15,7 +15,12 @@ let Config={
     "activityDetail": {
       title: '微信小程序',
       desc: '最具人气的小程序',
-      path: '/pages/activityDetail / activityDetail ? id= '
+      path: '/pages/activityDetail/activityDetail?id='
+    },
+    "productDetail": {
+      title: '微信小程序',
+      desc: '最具人气的小程序',
+      path: '/pages/productDetail/productDetail?id= '
     }
   }
 }

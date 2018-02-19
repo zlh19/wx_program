@@ -5,29 +5,28 @@ Page({
     data: {
       Config: Config,
       cateList:[],
-      productList:[]
+      productList:[],
+      cateOptions:{
+        sid: 1
+      },
+      productOptions:{
+        cateId:'',
+        keyword: '',
+        pn: 1,
+        ps: 1000
+      }
     },
     onLoad() {
-      // this.setData({
-      //   Config: {
-      //     hosts: app.globalData.imageUrl
-      //   }
-      // })
-
       this.getCate((id)=>{
-        this.getProduct(id)
+        this.data['productOptions']['cateId']=id
+        this.getProduct()
       })
     },
-    getProduct(id){
+    getProduct(){
       Ajax({
         url: '/produce/',
         method: 'get',
-        data: {
-          cateId: id,
-          keyword:'',
-          pn:1,
-          ps:100
-        }
+        data: this.data.productOptions
       }).then((res) => {
         if (res.data.code === 0) {
           this.setData({
@@ -37,33 +36,16 @@ Page({
       }).catch((error) => {
         console.log(error)
       })
-
-      // Ajax({
-      //   url: '/cate/' + id,
-      //   method: 'get',
-      //   data: {
-      //     cateId: id
-      //   }
-      // }).then((res) => {
-      //   if (res.data.code === 0) {
-      //     this.setData({
-      //       productList: res.data.data
-      //     })
-      //   }
-      // }).catch((error) => {
-      //   console.log(error)
-      // })
     },
     getCate(callback){
       Ajax({
         url: '/cate',
         method: 'get',
-        data: {
-          sid: 1
-        }
+        data: this.data.cateOptions
       }).then((res) => {
         if (res.data.code === 0) {
           this.renderCate(res.data.data)
+          console.log(res.data.data[0].id)
           callback && callback(res.data.data[0].id)
         }
       }).catch((error) => {
@@ -100,8 +82,9 @@ Page({
     cateTap(e){
       const currentIndex=e.currentTarget.dataset.index
       const currentId = e.currentTarget.dataset.id
+      this.data['productOptions']['cateId'] = currentId
       this.switchCate(currentIndex)
-      this.getProduct(currentId)
+      this.getProduct()
     },
     onShareAppMessage() {
       return {

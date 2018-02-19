@@ -1,6 +1,6 @@
 var app = getApp()
 import { Ajax } from './../../utils/ajax'
-import { Config } from './../../config/config'
+import { Config, setShareData } from './../../config/config'
 Page({
     data: {
       Config: Config,
